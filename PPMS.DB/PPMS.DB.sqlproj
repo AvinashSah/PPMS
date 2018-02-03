@@ -57,5 +57,25 @@
   <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
+    <Folder Include="dbo\" />
+    <Folder Include="dbo\Tables\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="dbo\Tables\UserRoleMapping.sql" />
+    <Build Include="dbo\Tables\UserMaster.sql" />
+    <Build Include="dbo\Tables\Tanker.sql" />
+    <Build Include="dbo\Tables\Sale.sql" />
+    <Build Include="dbo\Tables\RoleOperationMapping.sql" />
+    <Build Include="dbo\Tables\RoleMaster.sql" />
+    <Build Include="dbo\Tables\OperationMaster.sql" />
+    <Build Include="dbo\Tables\Meter.sql" />
+    <Build Include="dbo\Tables\FuelType.sql" />
+    <Build Include="dbo\Tables\DenominationType.sql" />
+    <Build Include="dbo\Tables\DailyTankerReading.sql" />
+    <Build Include="dbo\Tables\DailyMeterReading.sql" />
+    <Build Include="dbo\Tables\DailyFuelCost.sql" />
+    <Build Include="dbo\Tables\DailyCashSaleDenomination.sql" />
+    <Build Include="dbo\Tables\CustomerType.sql" />
+    <Build Include="dbo\Tables\Customer.sql" />
   </ItemGroup>
 </Project>
