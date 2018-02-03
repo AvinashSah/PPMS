@@ -1,0 +1,1073 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ppmsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ContactNumber" Type="int" />
+          <Property Name="EmailId" Type="nvarchar" MaxLength="50" />
+          <Property Name="AddressLineOne" Type="nvarchar(max)" />
+          <Property Name="AddressLineTwo" Type="nvarchar(max)" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" />
+          <Property Name="District" Type="nvarchar" MaxLength="50" />
+          <Property Name="State" Type="nvarchar" MaxLength="50" />
+          <Property Name="PinCode" Type="int" />
+          <Property Name="CustomerTypeId" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CustomerType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DailyCashSaleDenomination">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="DenominationTypeId" Type="int" Nullable="false" />
+          <Property Name="Count" Type="int" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CreatedOn" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DailyFuelCost">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FuelTypeId" Type="int" Nullable="false" />
+          <Property Name="CostPerLiter" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="CreatedOn" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DailyMeterReading">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MeterId" Type="int" Nullable="false" />
+          <Property Name="DayStartReading" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DayEndReading" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="CreatedOn" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DailyTankerReading">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TankerId" Type="int" Nullable="false" />
+          <Property Name="DailyStartReading" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DailyEndReading" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="CreatedOn" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DenominationType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Currency" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Value" Type="int" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="CreatedOn" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FuelType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Meter">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FuelTypeId" Type="int" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OperationMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OperationName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="RoleMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="RoleOperationMapping">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="OperationId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sale">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerId" Type="int" />
+          <Property Name="SellerId" Type="int" />
+          <Property Name="ItemType" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FuelTypeId" Type="int" Nullable="false" />
+          <Property Name="SalesAmount" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PaymentMode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FuelQuantity" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UniqueTokenNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tanker">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FuelTypeId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Size" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="UserMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="EmailId" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mobile" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="EmpId" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="UserRoleMapping">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Customer_CustomerType">
+          <End Role="CustomerType" Type="Self.CustomerType" Multiplicity="1" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="CustomerTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DailyCashSaleDenomination_DenominationType">
+          <End Role="DenominationType" Type="Self.DenominationType" Multiplicity="1" />
+          <End Role="DailyCashSaleDenomination" Type="Self.DailyCashSaleDenomination" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DenominationType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DailyCashSaleDenomination">
+              <PropertyRef Name="DenominationTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DailyFuelCost_FuelType">
+          <End Role="FuelType" Type="Self.FuelType" Multiplicity="1" />
+          <End Role="DailyFuelCost" Type="Self.DailyFuelCost" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FuelType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DailyFuelCost">
+              <PropertyRef Name="FuelTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DailyMeterReading_Meter">
+          <End Role="Meter" Type="Self.Meter" Multiplicity="1" />
+          <End Role="DailyMeterReading" Type="Self.DailyMeterReading" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meter">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DailyMeterReading">
+              <PropertyRef Name="MeterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DailyTankerReading_Tanker">
+          <End Role="Tanker" Type="Self.Tanker" Multiplicity="1" />
+          <End Role="DailyTankerReading" Type="Self.DailyTankerReading" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tanker">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DailyTankerReading">
+              <PropertyRef Name="TankerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Meter_FuelType">
+          <End Role="FuelType" Type="Self.FuelType" Multiplicity="1" />
+          <End Role="Meter" Type="Self.Meter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FuelType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Meter">
+              <PropertyRef Name="FuelTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoleOperationMapping_OperationMaster">
+          <End Role="OperationMaster" Type="Self.OperationMaster" Multiplicity="1" />
+          <End Role="RoleOperationMapping" Type="Self.RoleOperationMapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OperationMaster">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RoleOperationMapping">
+              <PropertyRef Name="OperationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoleOperationMapping_RoleMaster">
+          <End Role="RoleMaster" Type="Self.RoleMaster" Multiplicity="1" />
+          <End Role="RoleOperationMapping" Type="Self.RoleOperationMapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoleMaster">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RoleOperationMapping">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sale_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="Sale" Type="Self.Sale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sale">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sale_FuelType">
+          <End Role="FuelType" Type="Self.FuelType" Multiplicity="1" />
+          <End Role="Sale" Type="Self.Sale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FuelType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sale">
+              <PropertyRef Name="FuelTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tanker_FuelType">
+          <End Role="FuelType" Type="Self.FuelType" Multiplicity="1" />
+          <End Role="Tanker" Type="Self.Tanker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FuelType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Tanker">
+              <PropertyRef Name="FuelTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRoleMapping_RoleMaster">
+          <End Role="RoleMaster" Type="Self.RoleMaster" Multiplicity="1" />
+          <End Role="UserRoleMapping" Type="Self.UserRoleMapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoleMaster">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserRoleMapping">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRoleMapping_UserMaster">
+          <End Role="UserMaster" Type="Self.UserMaster" Multiplicity="1" />
+          <End Role="UserRoleMapping" Type="Self.UserRoleMapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserMaster">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserRoleMapping">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ppmsModelStoreContainer">
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CustomerType" EntityType="Self.CustomerType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DailyCashSaleDenomination" EntityType="Self.DailyCashSaleDenomination" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DailyFuelCost" EntityType="Self.DailyFuelCost" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DailyMeterReading" EntityType="Self.DailyMeterReading" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DailyTankerReading" EntityType="Self.DailyTankerReading" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DenominationType" EntityType="Self.DenominationType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FuelType" EntityType="Self.FuelType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Meter" EntityType="Self.Meter" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OperationMaster" EntityType="Self.OperationMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RoleMaster" EntityType="Self.RoleMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RoleOperationMapping" EntityType="Self.RoleOperationMapping" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sale" EntityType="Self.Sale" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tanker" EntityType="Self.Tanker" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserMaster" EntityType="Self.UserMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserRoleMapping" EntityType="Self.UserRoleMapping" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Customer_CustomerType" Association="Self.FK_Customer_CustomerType">
+            <End Role="CustomerType" EntitySet="CustomerType" />
+            <End Role="Customer" EntitySet="Customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DailyCashSaleDenomination_DenominationType" Association="Self.FK_DailyCashSaleDenomination_DenominationType">
+            <End Role="DenominationType" EntitySet="DenominationType" />
+            <End Role="DailyCashSaleDenomination" EntitySet="DailyCashSaleDenomination" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DailyFuelCost_FuelType" Association="Self.FK_DailyFuelCost_FuelType">
+            <End Role="FuelType" EntitySet="FuelType" />
+            <End Role="DailyFuelCost" EntitySet="DailyFuelCost" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DailyMeterReading_Meter" Association="Self.FK_DailyMeterReading_Meter">
+            <End Role="Meter" EntitySet="Meter" />
+            <End Role="DailyMeterReading" EntitySet="DailyMeterReading" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DailyTankerReading_Tanker" Association="Self.FK_DailyTankerReading_Tanker">
+            <End Role="Tanker" EntitySet="Tanker" />
+            <End Role="DailyTankerReading" EntitySet="DailyTankerReading" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Meter_FuelType" Association="Self.FK_Meter_FuelType">
+            <End Role="FuelType" EntitySet="FuelType" />
+            <End Role="Meter" EntitySet="Meter" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoleOperationMapping_OperationMaster" Association="Self.FK_RoleOperationMapping_OperationMaster">
+            <End Role="OperationMaster" EntitySet="OperationMaster" />
+            <End Role="RoleOperationMapping" EntitySet="RoleOperationMapping" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoleOperationMapping_RoleMaster" Association="Self.FK_RoleOperationMapping_RoleMaster">
+            <End Role="RoleMaster" EntitySet="RoleMaster" />
+            <End Role="RoleOperationMapping" EntitySet="RoleOperationMapping" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sale_Customer" Association="Self.FK_Sale_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Sale" EntitySet="Sale" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sale_FuelType" Association="Self.FK_Sale_FuelType">
+            <End Role="FuelType" EntitySet="FuelType" />
+            <End Role="Sale" EntitySet="Sale" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tanker_FuelType" Association="Self.FK_Tanker_FuelType">
+            <End Role="FuelType" EntitySet="FuelType" />
+            <End Role="Tanker" EntitySet="Tanker" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRoleMapping_RoleMaster" Association="Self.FK_UserRoleMapping_RoleMaster">
+            <End Role="RoleMaster" EntitySet="RoleMaster" />
+            <End Role="UserRoleMapping" EntitySet="UserRoleMapping" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRoleMapping_UserMaster" Association="Self.FK_UserRoleMapping_UserMaster">
+            <End Role="UserMaster" EntitySet="UserMaster" />
+            <End Role="UserRoleMapping" EntitySet="UserRoleMapping" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ppmsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContactNumber" Type="Int32" />
+          <Property Name="EmailId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AddressLineOne" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AddressLineTwo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="District" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PinCode" Type="Int32" />
+          <Property Name="CustomerTypeId" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="CustomerType" Relationship="Self.FK_Customer_CustomerType" FromRole="Customer" ToRole="CustomerType" />
+          <NavigationProperty Name="Sales" Relationship="Self.FK_Sale_Customer" FromRole="Customer" ToRole="Sale" />
+        </EntityType>
+        <EntityType Name="CustomerType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Customers" Relationship="Self.FK_Customer_CustomerType" FromRole="CustomerType" ToRole="Customer" />
+        </EntityType>
+        <EntityType Name="DailyCashSaleDenomination">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DenominationTypeId" Type="Int32" Nullable="false" />
+          <Property Name="Count" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedOn" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="DenominationType" Relationship="Self.FK_DailyCashSaleDenomination_DenominationType" FromRole="DailyCashSaleDenomination" ToRole="DenominationType" />
+        </EntityType>
+        <EntityType Name="DailyFuelCost">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FuelTypeId" Type="Int32" Nullable="false" />
+          <Property Name="CostPerLiter" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CreatedOn" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="FuelType" Relationship="Self.FK_DailyFuelCost_FuelType" FromRole="DailyFuelCost" ToRole="FuelType" />
+        </EntityType>
+        <EntityType Name="DailyMeterReading">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MeterId" Type="Int32" Nullable="false" />
+          <Property Name="DayStartReading" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DayEndReading" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CreatedOn" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Meter" Relationship="Self.FK_DailyMeterReading_Meter" FromRole="DailyMeterReading" ToRole="Meter" />
+        </EntityType>
+        <EntityType Name="DailyTankerReading">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TankerId" Type="Int32" Nullable="false" />
+          <Property Name="DailyStartReading" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DailyEndReading" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CreatedOn" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Tanker" Relationship="Self.FK_DailyTankerReading_Tanker" FromRole="DailyTankerReading" ToRole="Tanker" />
+        </EntityType>
+        <EntityType Name="DenominationType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Currency" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Value" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedOn" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="DailyCashSaleDenominations" Relationship="Self.FK_DailyCashSaleDenomination_DenominationType" FromRole="DenominationType" ToRole="DailyCashSaleDenomination" />
+        </EntityType>
+        <EntityType Name="FuelType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="DailyFuelCosts" Relationship="Self.FK_DailyFuelCost_FuelType" FromRole="FuelType" ToRole="DailyFuelCost" />
+          <NavigationProperty Name="Meters" Relationship="Self.FK_Meter_FuelType" FromRole="FuelType" ToRole="Meter" />
+          <NavigationProperty Name="Sales" Relationship="Self.FK_Sale_FuelType" FromRole="FuelType" ToRole="Sale" />
+          <NavigationProperty Name="Tankers" Relationship="Self.FK_Tanker_FuelType" FromRole="FuelType" ToRole="Tanker" />
+        </EntityType>
+        <EntityType Name="Meter">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FuelTypeId" Type="Int32" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="DailyMeterReadings" Relationship="Self.FK_DailyMeterReading_Meter" FromRole="Meter" ToRole="DailyMeterReading" />
+          <NavigationProperty Name="FuelType" Relationship="Self.FK_Meter_FuelType" FromRole="Meter" ToRole="FuelType" />
+        </EntityType>
+        <EntityType Name="OperationMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OperationName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="RoleOperationMappings" Relationship="Self.FK_RoleOperationMapping_OperationMaster" FromRole="OperationMaster" ToRole="RoleOperationMapping" />
+        </EntityType>
+        <EntityType Name="RoleMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="RoleOperationMappings" Relationship="Self.FK_RoleOperationMapping_RoleMaster" FromRole="RoleMaster" ToRole="RoleOperationMapping" />
+          <NavigationProperty Name="UserRoleMappings" Relationship="Self.FK_UserRoleMapping_RoleMaster" FromRole="RoleMaster" ToRole="UserRoleMapping" />
+        </EntityType>
+        <EntityType Name="RoleOperationMapping">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="OperationId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="OperationMaster" Relationship="Self.FK_RoleOperationMapping_OperationMaster" FromRole="RoleOperationMapping" ToRole="OperationMaster" />
+          <NavigationProperty Name="RoleMaster" Relationship="Self.FK_RoleOperationMapping_RoleMaster" FromRole="RoleOperationMapping" ToRole="RoleMaster" />
+        </EntityType>
+        <EntityType Name="Sale">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerId" Type="Int32" />
+          <Property Name="SellerId" Type="Int32" />
+          <Property Name="ItemType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FuelTypeId" Type="Int32" Nullable="false" />
+          <Property Name="SalesAmount" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PaymentMode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FuelQuantity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UniqueTokenNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK_Sale_Customer" FromRole="Sale" ToRole="Customer" />
+          <NavigationProperty Name="FuelType" Relationship="Self.FK_Sale_FuelType" FromRole="Sale" ToRole="FuelType" />
+        </EntityType>
+        <EntityType Name="Tanker">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FuelTypeId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Size" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="DailyTankerReadings" Relationship="Self.FK_DailyTankerReading_Tanker" FromRole="Tanker" ToRole="DailyTankerReading" />
+          <NavigationProperty Name="FuelType" Relationship="Self.FK_Tanker_FuelType" FromRole="Tanker" ToRole="FuelType" />
+        </EntityType>
+        <EntityType Name="UserMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EmailId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="EmpId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="UserRoleMappings" Relationship="Self.FK_UserRoleMapping_UserMaster" FromRole="UserMaster" ToRole="UserRoleMapping" />
+        </EntityType>
+        <EntityType Name="UserRoleMapping">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="RoleMaster" Relationship="Self.FK_UserRoleMapping_RoleMaster" FromRole="UserRoleMapping" ToRole="RoleMaster" />
+          <NavigationProperty Name="UserMaster" Relationship="Self.FK_UserRoleMapping_UserMaster" FromRole="UserRoleMapping" ToRole="UserMaster" />
+        </EntityType>
+        <Association Name="FK_Customer_CustomerType">
+          <End Role="CustomerType" Type="Self.CustomerType" Multiplicity="1" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="CustomerTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sale_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="Sale" Type="Self.Sale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sale">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DailyCashSaleDenomination_DenominationType">
+          <End Role="DenominationType" Type="Self.DenominationType" Multiplicity="1" />
+          <End Role="DailyCashSaleDenomination" Type="Self.DailyCashSaleDenomination" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DenominationType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DailyCashSaleDenomination">
+              <PropertyRef Name="DenominationTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DailyFuelCost_FuelType">
+          <End Role="FuelType" Type="Self.FuelType" Multiplicity="1" />
+          <End Role="DailyFuelCost" Type="Self.DailyFuelCost" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FuelType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DailyFuelCost">
+              <PropertyRef Name="FuelTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DailyMeterReading_Meter">
+          <End Role="Meter" Type="Self.Meter" Multiplicity="1" />
+          <End Role="DailyMeterReading" Type="Self.DailyMeterReading" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meter">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DailyMeterReading">
+              <PropertyRef Name="MeterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DailyTankerReading_Tanker">
+          <End Role="Tanker" Type="Self.Tanker" Multiplicity="1" />
+          <End Role="DailyTankerReading" Type="Self.DailyTankerReading" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tanker">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DailyTankerReading">
+              <PropertyRef Name="TankerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Meter_FuelType">
+          <End Role="FuelType" Type="Self.FuelType" Multiplicity="1" />
+          <End Role="Meter" Type="Self.Meter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FuelType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Meter">
+              <PropertyRef Name="FuelTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sale_FuelType">
+          <End Role="FuelType" Type="Self.FuelType" Multiplicity="1" />
+          <End Role="Sale" Type="Self.Sale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FuelType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sale">
+              <PropertyRef Name="FuelTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tanker_FuelType">
+          <End Role="FuelType" Type="Self.FuelType" Multiplicity="1" />
+          <End Role="Tanker" Type="Self.Tanker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FuelType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Tanker">
+              <PropertyRef Name="FuelTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoleOperationMapping_OperationMaster">
+          <End Role="OperationMaster" Type="Self.OperationMaster" Multiplicity="1" />
+          <End Role="RoleOperationMapping" Type="Self.RoleOperationMapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OperationMaster">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RoleOperationMapping">
+              <PropertyRef Name="OperationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoleOperationMapping_RoleMaster">
+          <End Role="RoleMaster" Type="Self.RoleMaster" Multiplicity="1" />
+          <End Role="RoleOperationMapping" Type="Self.RoleOperationMapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoleMaster">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RoleOperationMapping">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRoleMapping_RoleMaster">
+          <End Role="RoleMaster" Type="Self.RoleMaster" Multiplicity="1" />
+          <End Role="UserRoleMapping" Type="Self.UserRoleMapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoleMaster">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserRoleMapping">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRoleMapping_UserMaster">
+          <End Role="UserMaster" Type="Self.UserMaster" Multiplicity="1" />
+          <End Role="UserRoleMapping" Type="Self.UserRoleMapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserMaster">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserRoleMapping">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ppmsEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Customers" EntityType="Self.Customer" />
+          <EntitySet Name="CustomerTypes" EntityType="Self.CustomerType" />
+          <EntitySet Name="DailyCashSaleDenominations" EntityType="Self.DailyCashSaleDenomination" />
+          <EntitySet Name="DailyFuelCosts" EntityType="Self.DailyFuelCost" />
+          <EntitySet Name="DailyMeterReadings" EntityType="Self.DailyMeterReading" />
+          <EntitySet Name="DailyTankerReadings" EntityType="Self.DailyTankerReading" />
+          <EntitySet Name="DenominationTypes" EntityType="Self.DenominationType" />
+          <EntitySet Name="FuelTypes" EntityType="Self.FuelType" />
+          <EntitySet Name="Meters" EntityType="Self.Meter" />
+          <EntitySet Name="OperationMasters" EntityType="Self.OperationMaster" />
+          <EntitySet Name="RoleMasters" EntityType="Self.RoleMaster" />
+          <EntitySet Name="RoleOperationMappings" EntityType="Self.RoleOperationMapping" />
+          <EntitySet Name="Sales" EntityType="Self.Sale" />
+          <EntitySet Name="Tankers" EntityType="Self.Tanker" />
+          <EntitySet Name="UserMasters" EntityType="Self.UserMaster" />
+          <EntitySet Name="UserRoleMappings" EntityType="Self.UserRoleMapping" />
+          <AssociationSet Name="FK_Customer_CustomerType" Association="Self.FK_Customer_CustomerType">
+            <End Role="CustomerType" EntitySet="CustomerTypes" />
+            <End Role="Customer" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sale_Customer" Association="Self.FK_Sale_Customer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Sale" EntitySet="Sales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DailyCashSaleDenomination_DenominationType" Association="Self.FK_DailyCashSaleDenomination_DenominationType">
+            <End Role="DenominationType" EntitySet="DenominationTypes" />
+            <End Role="DailyCashSaleDenomination" EntitySet="DailyCashSaleDenominations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DailyFuelCost_FuelType" Association="Self.FK_DailyFuelCost_FuelType">
+            <End Role="FuelType" EntitySet="FuelTypes" />
+            <End Role="DailyFuelCost" EntitySet="DailyFuelCosts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DailyMeterReading_Meter" Association="Self.FK_DailyMeterReading_Meter">
+            <End Role="Meter" EntitySet="Meters" />
+            <End Role="DailyMeterReading" EntitySet="DailyMeterReadings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DailyTankerReading_Tanker" Association="Self.FK_DailyTankerReading_Tanker">
+            <End Role="Tanker" EntitySet="Tankers" />
+            <End Role="DailyTankerReading" EntitySet="DailyTankerReadings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Meter_FuelType" Association="Self.FK_Meter_FuelType">
+            <End Role="FuelType" EntitySet="FuelTypes" />
+            <End Role="Meter" EntitySet="Meters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sale_FuelType" Association="Self.FK_Sale_FuelType">
+            <End Role="FuelType" EntitySet="FuelTypes" />
+            <End Role="Sale" EntitySet="Sales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tanker_FuelType" Association="Self.FK_Tanker_FuelType">
+            <End Role="FuelType" EntitySet="FuelTypes" />
+            <End Role="Tanker" EntitySet="Tankers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoleOperationMapping_OperationMaster" Association="Self.FK_RoleOperationMapping_OperationMaster">
+            <End Role="OperationMaster" EntitySet="OperationMasters" />
+            <End Role="RoleOperationMapping" EntitySet="RoleOperationMappings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoleOperationMapping_RoleMaster" Association="Self.FK_RoleOperationMapping_RoleMaster">
+            <End Role="RoleMaster" EntitySet="RoleMasters" />
+            <End Role="RoleOperationMapping" EntitySet="RoleOperationMappings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRoleMapping_RoleMaster" Association="Self.FK_UserRoleMapping_RoleMaster">
+            <End Role="RoleMaster" EntitySet="RoleMasters" />
+            <End Role="UserRoleMapping" EntitySet="UserRoleMappings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRoleMapping_UserMaster" Association="Self.FK_UserRoleMapping_UserMaster">
+            <End Role="UserMaster" EntitySet="UserMasters" />
+            <End Role="UserRoleMapping" EntitySet="UserRoleMappings" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ppmsModelStoreContainer" CdmEntityContainer="ppmsEntities">
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="ppmsModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="AddressLineOne" ColumnName="AddressLineOne" />
+                <ScalarProperty Name="AddressLineTwo" ColumnName="AddressLineTwo" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="District" ColumnName="District" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="PinCode" ColumnName="PinCode" />
+                <ScalarProperty Name="CustomerTypeId" ColumnName="CustomerTypeId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomerTypes">
+            <EntityTypeMapping TypeName="ppmsModel.CustomerType">
+              <MappingFragment StoreEntitySet="CustomerType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DailyCashSaleDenominations">
+            <EntityTypeMapping TypeName="ppmsModel.DailyCashSaleDenomination">
+              <MappingFragment StoreEntitySet="DailyCashSaleDenomination">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="DenominationTypeId" ColumnName="DenominationTypeId" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DailyFuelCosts">
+            <EntityTypeMapping TypeName="ppmsModel.DailyFuelCost">
+              <MappingFragment StoreEntitySet="DailyFuelCost">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FuelTypeId" ColumnName="FuelTypeId" />
+                <ScalarProperty Name="CostPerLiter" ColumnName="CostPerLiter" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DailyMeterReadings">
+            <EntityTypeMapping TypeName="ppmsModel.DailyMeterReading">
+              <MappingFragment StoreEntitySet="DailyMeterReading">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="MeterId" ColumnName="MeterId" />
+                <ScalarProperty Name="DayStartReading" ColumnName="DayStartReading" />
+                <ScalarProperty Name="DayEndReading" ColumnName="DayEndReading" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DailyTankerReadings">
+            <EntityTypeMapping TypeName="ppmsModel.DailyTankerReading">
+              <MappingFragment StoreEntitySet="DailyTankerReading">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TankerId" ColumnName="TankerId" />
+                <ScalarProperty Name="DailyStartReading" ColumnName="DailyStartReading" />
+                <ScalarProperty Name="DailyEndReading" ColumnName="DailyEndReading" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DenominationTypes">
+            <EntityTypeMapping TypeName="ppmsModel.DenominationType">
+              <MappingFragment StoreEntitySet="DenominationType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FuelTypes">
+            <EntityTypeMapping TypeName="ppmsModel.FuelType">
+              <MappingFragment StoreEntitySet="FuelType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Meters">
+            <EntityTypeMapping TypeName="ppmsModel.Meter">
+              <MappingFragment StoreEntitySet="Meter">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="FuelTypeId" ColumnName="FuelTypeId" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OperationMasters">
+            <EntityTypeMapping TypeName="ppmsModel.OperationMaster">
+              <MappingFragment StoreEntitySet="OperationMaster">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="OperationName" ColumnName="OperationName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoleMasters">
+            <EntityTypeMapping TypeName="ppmsModel.RoleMaster">
+              <MappingFragment StoreEntitySet="RoleMaster">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoleOperationMappings">
+            <EntityTypeMapping TypeName="ppmsModel.RoleOperationMapping">
+              <MappingFragment StoreEntitySet="RoleOperationMapping">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="OperationId" ColumnName="OperationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sales">
+            <EntityTypeMapping TypeName="ppmsModel.Sale">
+              <MappingFragment StoreEntitySet="Sale">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="SellerId" ColumnName="SellerId" />
+                <ScalarProperty Name="ItemType" ColumnName="ItemType" />
+                <ScalarProperty Name="FuelTypeId" ColumnName="FuelTypeId" />
+                <ScalarProperty Name="SalesAmount" ColumnName="SalesAmount" />
+                <ScalarProperty Name="PaymentMode" ColumnName="PaymentMode" />
+                <ScalarProperty Name="FuelQuantity" ColumnName="FuelQuantity" />
+                <ScalarProperty Name="UniqueTokenNumber" ColumnName="UniqueTokenNumber" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tankers">
+            <EntityTypeMapping TypeName="ppmsModel.Tanker">
+              <MappingFragment StoreEntitySet="Tanker">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FuelTypeId" ColumnName="FuelTypeId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Size" ColumnName="Size" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserMasters">
+            <EntityTypeMapping TypeName="ppmsModel.UserMaster">
+              <MappingFragment StoreEntitySet="UserMaster">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="EmpId" ColumnName="EmpId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRoleMappings">
+            <EntityTypeMapping TypeName="ppmsModel.UserRoleMapping">
+              <MappingFragment StoreEntitySet="UserRoleMapping">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
