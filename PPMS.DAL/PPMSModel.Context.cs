@@ -9,6 +9,7 @@
 
 namespace PPMS.DAL
 {
+    using PPMS.ENTITIES;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;

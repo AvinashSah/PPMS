@@ -39,16 +39,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <h1>PPMS</h1>
     <!-- Main-Content -->
     <div class="main-w3layouts-form">
-        <h2><img src="Content/images/logo.png" alt="logo"></h2>
+        <h2>
+            <img src="Content/images/logo.png" alt="logo"></h2>
         <!-- main-w3layouts-form -->
         <form id="loginForm" runat="server">
             <div class="fields-w3-agileits">
                 <span class="fa fa-user" aria-hidden="true"></span>
-                <input type="text" name="Username" required="" placeholder="Username" />
+                <asp:TextBox ID="txtUserName" runat="server" type="text" name="Username" required="" placeholder="Username" />
             </div>
             <div class="fields-w3-agileits">
                 <span class="fa fa-key" aria-hidden="true"></span>
-                <input type="password" name="Password" required="" placeholder="Password" />
+                <asp:TextBox ID="txtPassword" runat="server" type="password" name="Password" placeholder="Password" />
             </div>
             <div class="remember-section-wthree">
                 <ul>
@@ -62,7 +63,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 </ul>
                 <div class="clear"></div>
             </div>
-            <input id="login" type="submit" value="Login" runat="server" onclick="btnLogin_Click();" form="loginForm"/>
+            <input id="login" type="submit" value="Login" runat="server" onserverclick="login_ServerClick" form="loginForm" />
         </form>
         <!--// main-w3layouts-form -->
     </div>
