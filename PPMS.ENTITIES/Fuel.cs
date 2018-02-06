@@ -12,10 +12,10 @@ namespace PPMS.ENTITIES
     using System;
     using System.Collections.Generic;
     
-    public partial class FuelType
+    public partial class Fuel
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public FuelType()
+        public Fuel()
         {
             this.DailyFuelCosts = new HashSet<DailyFuelCost>();
             this.Meters = new HashSet<Meter>();
@@ -27,6 +27,7 @@ namespace PPMS.ENTITIES
         public string Name { get; set; }
         public string Description { get; set; }
         public bool IsActive { get; set; }
+        public string Type { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DailyFuelCost> DailyFuelCosts { get; set; }

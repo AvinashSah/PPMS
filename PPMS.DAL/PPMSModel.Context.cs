@@ -33,7 +33,6 @@ namespace PPMS.DAL
         public virtual DbSet<DailyMeterReading> DailyMeterReadings { get; set; }
         public virtual DbSet<DailyTankerReading> DailyTankerReadings { get; set; }
         public virtual DbSet<DenominationType> DenominationTypes { get; set; }
-        public virtual DbSet<FuelType> FuelTypes { get; set; }
         public virtual DbSet<Meter> Meters { get; set; }
         public virtual DbSet<OperationMaster> OperationMasters { get; set; }
         public virtual DbSet<RoleMaster> RoleMasters { get; set; }
@@ -42,5 +41,6 @@ namespace PPMS.DAL
         public virtual DbSet<Tanker> Tankers { get; set; }
         public virtual DbSet<UserMaster> UserMasters { get; set; }
         public virtual DbSet<UserRoleMapping> UserRoleMappings { get; set; }
+        public virtual DbSet<Fuel> Fuels { get; set; }
     }
 }

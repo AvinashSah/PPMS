@@ -15,15 +15,6 @@ namespace PPMS.Web
 
         }
 
-        protected void login_ServerClick()
-        {
-            var username = txtUserName.Text;
-            var pass = txtPassword.Text;
-            BAL_Common bAL_Common = new BAL_Common();
-            if (bAL_Common.ValidateUserLogin(username,pass))
-            {
-
-            }
-        }
+        
     }
 }

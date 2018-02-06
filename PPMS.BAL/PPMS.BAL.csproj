@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BAL_Common.cs" />
+    <Compile Include="BAL_Fuel.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -48,6 +49,10 @@
     <ProjectReference Include="..\PPMS.DAL\PPMS.DAL.csproj">
       <Project>{3B11F195-2BBB-48E1-AA16-D5266168FE54}</Project>
       <Name>PPMS.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PPMS.ENTITIES\PPMS.ENTITIES.csproj">
+      <Project>{40F4193E-A69F-4EA8-891D-9C405ED573B3}</Project>
+      <Name>PPMS.ENTITIES</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
