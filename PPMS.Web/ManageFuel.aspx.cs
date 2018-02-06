@@ -42,6 +42,8 @@ namespace PPMS.Web
                         continue;
                     }
                 }
+                htmlContent += "<td>" + "<button id=\"itemDelete\" class=\"btn btn-success nopadding\" style=\"padding:2px\"><i class=\"fa fa-edit\"></i></button>";
+                htmlContent += "<button id=\"itemDelete\" class=\"btn btn-danger nopadding\" style=\"padding:2px\"><i class=\"fa fa-remove\"></i></button>" + "</td>";
                 htmlContent += "</tr>";
                 finalstring += htmlContent;
             }
