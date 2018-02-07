@@ -18,7 +18,7 @@ namespace PPMS.DAL
                               where a.UserName == username && a.Password == pass
                               select a).FirstOrDefault();
             }
-            if(userMaster!=null)
+            if (userMaster != null)
             {
                 return true;
             }
@@ -26,7 +26,8 @@ namespace PPMS.DAL
             {
                 return false;
             }
-            
+
         }
+        
     }
 }

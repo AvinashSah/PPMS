@@ -49,6 +49,10 @@
       <Project>{3B11F195-2BBB-48E1-AA16-D5266168FE54}</Project>
       <Name>PPMS.DAL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PPMS.ENTITIES\PPMS.ENTITIES.csproj">
+      <Project>{40f4193e-a69f-4ea8-891d-9c405ed573b3}</Project>
+      <Name>PPMS.ENTITIES</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,4 +1,5 @@
-﻿<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -106,6 +107,7 @@
     <Content Include="Content\js\Dashboard.js" />
     <Content Include="InventoryReport.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="Login_OLD.aspx" />
     <Content Include="ManageCustomer.aspx" />
     <Content Include="ManageFuel.aspx" />
     <Content Include="ManageMeters.aspx" />
@@ -168,6 +170,13 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login_OLD.aspx.cs">
+      <DependentUpon>Login_OLD.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login_OLD.aspx.designer.cs">
+      <DependentUpon>Login_OLD.aspx</DependentUpon>
     </Compile>
     <Compile Include="ManageCustomer.aspx.cs">
       <DependentUpon>ManageCustomer.aspx</DependentUpon>
@@ -247,8 +256,12 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PPMS.BAL\PPMS.BAL.csproj">
-      <Project>{D24CF4A4-3564-44CE-8134-6536E411E0B8}</Project>
+      <Project>{d24cf4a4-3564-44ce-8134-6536e411e0b8}</Project>
       <Name>PPMS.BAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PPMS.ENTITIES\PPMS.ENTITIES.csproj">
+      <Project>{40f4193e-a69f-4ea8-891d-9c405ed573b3}</Project>
+      <Name>PPMS.ENTITIES</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

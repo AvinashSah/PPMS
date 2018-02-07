@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PPMS.ENTITIES;
 
 namespace PPMS.BAL
 {
@@ -14,5 +15,6 @@ namespace PPMS.BAL
             DAL_Common dAL_Common = new DAL_Common();
             return dAL_Common.ValidateUserLogin(username, pass);
         }
+        
     }
 }
