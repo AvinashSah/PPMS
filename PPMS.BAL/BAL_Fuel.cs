@@ -31,6 +31,7 @@ namespace PPMS.BAL
             fuel.Id = fuelData.Id;
             fuel.Name = fuelData.Name;
             fuel.Description = fuelData.Description;
+            fuel.Type = fuelData.Type;
             dailyFuelCost.FuelTypeId = fuel.Id;
             dailyFuelCost.CostPerLiter = fuelData.CostPerLiter;
             return dAL_Fuel.UpdateFuel(fuel, dailyFuelCost, userOpMap);
@@ -43,6 +44,7 @@ namespace PPMS.BAL
             DailyFuelCost dailyFuelCost = new DailyFuelCost();
             fuel.Name = fuelData.Name;
             fuel.Description = fuelData.Description;
+            fuel.Type = fuelData.Type;
             dailyFuelCost.CostPerLiter = fuelData.CostPerLiter;
             return dAL_Fuel.CreateFuel(fuel, dailyFuelCost, userOpMap);
         }

@@ -29,13 +29,14 @@
     }
 
     function BindFuelListToFuelTable(fuelList) {
+        $("#fuelList tbody").html("");
         var htmlContent = "";
 
         for (var i = 0; i < fuelList.length; i++) {
             htmlContent += "<tr class=\"fuelID\" id=\"" + (i + 1) + "\">";
             htmlContent += "<td scope=\"row\">" + fuelList[i].Name + "</td>";
-            htmlContent += "<td scope=\"row\">" + fuelList[i].Description + "</td>";
             htmlContent += "<td scope=\"row\">" + fuelList[i].Type + "</td>";
+            htmlContent += "<td scope=\"row\">" + fuelList[i].Description + "</td>";
             htmlContent += "<td scope=\"row\">" + fuelList[i].CostPerLiter + "</td>";
             htmlContent += "<td>" + "<button id=\"" + (i + 1) + "\" class=\"editFuel btn btn-danger nopadding\" style=\"padding:2px\"><i class=\"glyphicon glyphicon-pencil\"></i></button>" + "</td>";
             htmlContent += "</tr>";
@@ -94,6 +95,7 @@
         var desc = $("#description").val();
         var costperliter = $("#CostLtr").val();
         var fuelID = $("#fuelID").val();
+        $("#messageEdit").val("");
         var submitFuelData = { Id: fuelID, Name: fuelName, Description: desc, Type: fuelType, CostPerLiter: costperliter }
         SubmitEditFuelData(submitFuelData);
     });
@@ -110,20 +112,12 @@
             dataType: "json",
             data: JSON.stringify(postData),
             success: function (data) {
-                var json = jQuery.parseJSON(data);
-                var response = json.d;
-                if (response.submited) {
-                    BindFuelList();
-                    $("#editFuelModal").modal('hide');
-                    alert(response.message);
-                    event.preventDefault();
-                }
-                else {
-                    BindFuelList();
-                    $("#editFuelModal").modal('hide');
-                    alert(response.message);
-                    event.preventDefault();
-                }
+                var json = data.d;
+                BindFuelList();
+                alert(json);
+                //$("#message").html = json;
+                //setTimeout(function () { $("#message").fadeOut(); }, 10000);
+                $("#editFuelModal").modal('hide');
             }
         });
     }
@@ -149,20 +143,12 @@
             dataType: "json",
             data: JSON.stringify(postData),
             success: function (data) {
-                var json = jQuery.parseJSON(data);
-                var response = json.d;
-                if (response.submited) {
-                    BindFuelList();
-                    $("#createFuelModel").modal('hide');
-                    alert(response.message);
-                    event.preventDefault();
-                }
-                else {
-                    BindFuelList();
-                    $("#createFuelModel").modal('hide');
-                    alert(response.message);
-                    event.preventDefault();
-                }
+                var json = data.d;
+                BindFuelList();
+                alert(json);
+                $//("#message").html = json;
+                //setTimeout(function () { $("#message").fadeOut(); }, 10000);
+                $("#createFuelModel").modal('hide');
             }
         });
     }

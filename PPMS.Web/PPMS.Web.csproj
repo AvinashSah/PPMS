@@ -116,7 +116,10 @@
     <Content Include="Content\js\Chart.min.js" />
     <Content Include="Content\js\Dashboard.js" />
     <Content Include="Content\js\dataTables.bootstrap.min.js" />
+    <Content Include="Content\js\jquery-1.9.1.js" />
     <Content Include="Content\js\jquery.dataTables.min.js" />
+    <Content Include="Content\js\jquery.min.js" />
+    <Content Include="Content\js\notify.js" />
     <Content Include="FuelService.asmx" />
     <Content Include="InventoryReport.aspx" />
     <Content Include="Login.aspx" />

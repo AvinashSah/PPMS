@@ -6,7 +6,8 @@
             <div class="col-lg-12">
                 <div class="panel panel-default height">
                     <div class="panel-heading">
-                        <strong>Item Details</strong>
+                        <strong>Fuel List</strong>
+                        <label id="message"></label>
                         <button type="button" id="addNewFuelButton" tabindex="26" class="btn btn-success" style="float: right"><i class="fa fa-plus-circle">Add Fuel</i></button>
                     </div>
                     <div class="panel-body">
@@ -29,7 +30,7 @@
         </div>
     </div>
 
-    <div id="editFuelModal" class="modal fade" role="dialog">
+    <div id="editFuelModal" class="modal" role="dialog">
         <div class="modal-dialog">
 
             <div class="modal-content">
@@ -69,7 +70,7 @@
         </div>
     </div>
 
-    <div id="createFuelModel" class="modal fade" role="dialog">
+    <div id="createFuelModel" class="modal" role="dialog">
         <div class="modal-dialog">
 
             <div class="modal-content">

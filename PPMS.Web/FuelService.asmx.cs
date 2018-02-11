@@ -77,13 +77,16 @@ namespace PPMS.Web
                 long fuelID = bAL_Fuel.UpdateFuel(FuelData, userOpMap);
                 entitySubmittedResponse.submited = true;
                 entitySubmittedResponse.message = "Fuel submitted!";
-                return js.Serialize(entitySubmittedResponse);
+                //return js.Serialize(entitySubmittedResponse);
+                return js.Serialize("Fuel submitted!");
+
             }
             catch (Exception ex)
             {
                 entitySubmittedResponse.submited = false;
                 entitySubmittedResponse.message = string.Format("Error occured while generating Bill with message:{0}", ex.Message);
-                return js.Serialize(entitySubmittedResponse);
+                //return js.Serialize(entitySubmittedResponse);
+                return js.Serialize(string.Format("Error occured while generating Bill with message:{0}", ex.Message));
             }
         }
 
@@ -109,13 +112,14 @@ namespace PPMS.Web
                 long fuelID = bAL_Fuel.CreateFuel(FuelData, userOpMap);
                 entitySubmittedResponse.submited = true;
                 entitySubmittedResponse.message = "Fuel submitted!";
-                return js.Serialize(entitySubmittedResponse);
+                return js.Serialize("Fuel Created");
             }
             catch (Exception ex)
             {
                 entitySubmittedResponse.submited = false;
                 entitySubmittedResponse.message = string.Format("Error occured while generating Bill with message:{0}", ex.Message);
-                return js.Serialize(entitySubmittedResponse);
+                //return js.Serialize(entitySubmittedResponse);
+                return js.Serialize(string.Format("Error occured while generating Bill with message:{0}", ex.Message));
             }
         }
 
