@@ -4,36 +4,37 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="7ef22bd3038548f695006c4d97c3e6c4" Name="Diagram1">
-        <EntityTypeShape EntityType="ppmsModel.Customer" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ppmsModel.CustomerType" Width="1.5" PointX="1.5" PointY="3.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="ppmsModel.DailyCashSaleDenomination" Width="1.5" PointX="12" PointY="3.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="ppmsModel.DailyFuelCost" Width="1.5" PointX="3" PointY="5.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="ppmsModel.DailyMeterReading" Width="1.5" PointX="5.25" PointY="9.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="ppmsModel.DailyTankerReading" Width="1.5" PointX="5.25" PointY="16.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ppmsModel.DenominationType" Width="1.5" PointX="9.75" PointY="3.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="ppmsModel.Meter" Width="1.5" PointX="3" PointY="9.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="ppmsModel.OperationMaster" Width="1.5" PointX="7.75" PointY="13.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ppmsModel.RoleMaster" Width="1.5" PointX="7.75" PointY="10.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ppmsModel.RoleOperationMapping" Width="1.5" PointX="10" PointY="10.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ppmsModel.Sale" Width="1.5" PointX="6" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="ppmsModel.Tanker" Width="1.5" PointX="3" PointY="16.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ppmsModel.UserMaster" Width="1.5" PointX="7.75" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="ppmsModel.UserRoleMapping" Width="1.5" PointX="10" PointY="7.75" IsExpanded="true" />
+      <Diagram DiagramId="5dac453652104b6cb31acf5f1a2c4ccf" Name="Diagram1">
+        <EntityTypeShape EntityType="ppmsModel.C__RefactorLog" Width="1.5" PointX="0.75" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ppmsModel.Customer" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ppmsModel.CustomerType" Width="1.5" PointX="3.5" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ppmsModel.DailyCashSaleDenomination" Width="1.5" PointX="13" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ppmsModel.DailyFuelCost" Width="1.5" PointX="3" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ppmsModel.DailyMeterReading" Width="1.5" PointX="5.25" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ppmsModel.DailyTankerReading" Width="1.5" PointX="5.25" PointY="19.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ppmsModel.DenominationType" Width="1.5" PointX="10.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ppmsModel.Fuel" Width="1.5" PointX="0.75" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ppmsModel.Meter" Width="1.5" PointX="3" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ppmsModel.OperationMaster" Width="1.5" PointX="7.75" PointY="19.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ppmsModel.RoleMaster" Width="1.5" PointX="7.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ppmsModel.RoleOperationMapping" Width="1.5" PointX="10" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ppmsModel.Sale" Width="1.5" PointX="8" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="ppmsModel.Tanker" Width="1.5" PointX="3" PointY="19" IsExpanded="true" />
+        <EntityTypeShape EntityType="ppmsModel.UserMaster" Width="1.5" PointX="7.75" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ppmsModel.UserRoleMapping" Width="1.5" PointX="10" PointY="1.875" IsExpanded="true" />
         <AssociationConnector Association="ppmsModel.FK_Customer_CustomerType" ManuallyRouted="false" />
         <AssociationConnector Association="ppmsModel.FK_Sale_Customer" ManuallyRouted="false" />
         <AssociationConnector Association="ppmsModel.FK_DailyCashSaleDenomination_DenominationType" ManuallyRouted="false" />
+        <AssociationConnector Association="ppmsModel.FK_DailyFuelCost_FuelType" ManuallyRouted="false" />
         <AssociationConnector Association="ppmsModel.FK_DailyMeterReading_Meter" ManuallyRouted="false" />
         <AssociationConnector Association="ppmsModel.FK_DailyTankerReading_Tanker" ManuallyRouted="false" />
+        <AssociationConnector Association="ppmsModel.FK_Meter_FuelType" ManuallyRouted="false" />
+        <AssociationConnector Association="ppmsModel.FK_Sale_FuelType" ManuallyRouted="false" />
+        <AssociationConnector Association="ppmsModel.FK_Tanker_FuelType" ManuallyRouted="false" />
         <AssociationConnector Association="ppmsModel.FK_RoleOperationMapping_OperationMaster" ManuallyRouted="false" />
         <AssociationConnector Association="ppmsModel.FK_RoleOperationMapping_RoleMaster" ManuallyRouted="false" />
         <AssociationConnector Association="ppmsModel.FK_UserRoleMapping_RoleMaster" ManuallyRouted="false" />
         <AssociationConnector Association="ppmsModel.FK_UserRoleMapping_UserMaster" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="ppmsModel.Fuel" Width="1.5" PointX="0.75" PointY="13" />
-        <AssociationConnector Association="ppmsModel.FK_DailyFuelCost_FuelType1" />
-        <AssociationConnector Association="ppmsModel.FK_Meter_FuelType1" />
-        <AssociationConnector Association="ppmsModel.FK_Sale_FuelType1" />
-        <AssociationConnector Association="ppmsModel.FK_Tanker_FuelType1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

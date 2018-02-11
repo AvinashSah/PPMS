@@ -53,6 +53,9 @@
     <Compile Include="CustomerType.cs">
       <DependentUpon>PPMSModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="C__RefactorLog.cs">
+      <DependentUpon>PPMSModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DailyCashSaleDenomination.cs">
       <DependentUpon>PPMSModel.tt</DependentUpon>
     </Compile>
@@ -90,6 +93,7 @@
     <Compile Include="RoleOperationMapping.cs">
       <DependentUpon>PPMSModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="RoleTypeConstant.cs" />
     <Compile Include="Sale.cs">
       <DependentUpon>PPMSModel.tt</DependentUpon>
     </Compile>
@@ -99,6 +103,7 @@
     <Compile Include="UserMaster.cs">
       <DependentUpon>PPMSModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="UserOpMap.cs" />
     <Compile Include="UserRoleMapping.cs">
       <DependentUpon>PPMSModel.tt</DependentUpon>
     </Compile>

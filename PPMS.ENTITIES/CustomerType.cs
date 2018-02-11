@@ -23,6 +23,10 @@ namespace PPMS.ENTITIES
         public int Id { get; set; }
         public string TypeName { get; set; }
         public bool IsActive { get; set; }
+        public Nullable<long> CreatedBy { get; set; }
+        public Nullable<long> Updatedby { get; set; }
+        public Nullable<System.DateTime> CreatedOn { get; set; }
+        public Nullable<System.DateTime> UpdatedOn { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Customer> Customers { get; set; }

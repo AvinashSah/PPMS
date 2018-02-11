@@ -50,7 +50,7 @@
                 <ul>
                     <li>
                         <label class="anim">
-                            <input type="checkbox" class="checkbox" />
+                            <asp:CheckBox ID="chkRememberMe" class="checkbox" runat="server" type="checkbox" />
                             <span>Remember me ?</span>
                         </label>
                     </li>

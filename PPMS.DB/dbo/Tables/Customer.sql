@@ -11,6 +11,10 @@
     [PinCode]        INT            NULL,
     [CustomerTypeId] INT            NOT NULL,
     [IsActive]       BIT            CONSTRAINT [DF_Customer_IsActive] DEFAULT ((1)) NOT NULL,
+	[CreatedBy] BIGINT NULL, 
+    [Updatedby] BIGINT NULL, 
+    [CreatedOn] DATETIME NULL DEFAULT GETDATE(), 
+    [UpdatedOn] DATETIME NULL DEFAULT GETDATE(), 
     CONSTRAINT [PK_Customer] PRIMARY KEY CLUSTERED ([Id] ASC),
     CONSTRAINT [FK_Customer_CustomerType] FOREIGN KEY ([CustomerTypeId]) REFERENCES [dbo].[CustomerType] ([Id])
 );

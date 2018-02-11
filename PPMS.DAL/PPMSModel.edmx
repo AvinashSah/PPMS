@@ -4,7 +4,13 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="ppmsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="ppmsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__RefactorLog">
+          <Key>
+            <PropertyRef Name="OperationKey" />
+          </Key>
+          <Property Name="OperationKey" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
         <EntityType Name="Customer">
           <Key>
             <PropertyRef Name="Id" />
@@ -21,6 +27,10 @@
           <Property Name="PinCode" Type="int" />
           <Property Name="CustomerTypeId" Type="int" Nullable="false" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="bigint" />
+          <Property Name="Updatedby" Type="bigint" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedOn" Type="datetime" />
         </EntityType>
         <EntityType Name="CustomerType">
           <Key>
@@ -29,6 +39,10 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TypeName" Type="nvarchar(max)" Nullable="false" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="bigint" />
+          <Property Name="Updatedby" Type="bigint" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedOn" Type="datetime" />
         </EntityType>
         <EntityType Name="DailyCashSaleDenomination">
           <Key>
@@ -39,9 +53,11 @@
           <Property Name="DenominationTypeId" Type="int" Nullable="false" />
           <Property Name="Count" Type="int" Nullable="false" />
           <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="CreatedOn" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
-          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="bigint" />
+          <Property Name="Updatedby" Type="bigint" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedOn" Type="datetime" />
         </EntityType>
         <EntityType Name="DailyFuelCost">
           <Key>
@@ -51,9 +67,11 @@
           <Property Name="FuelTypeId" Type="int" Nullable="false" />
           <Property Name="CostPerLiter" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Date" Type="date" Nullable="false" />
-          <Property Name="CreatedOn" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
-          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="bigint" />
+          <Property Name="Updatedby" Type="bigint" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedOn" Type="datetime" />
         </EntityType>
         <EntityType Name="DailyMeterReading">
           <Key>
@@ -64,9 +82,11 @@
           <Property Name="DayStartReading" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="DayEndReading" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Date" Type="date" Nullable="false" />
-          <Property Name="CreatedOn" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
-          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="bigint" />
+          <Property Name="Updatedby" Type="bigint" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedOn" Type="datetime" />
         </EntityType>
         <EntityType Name="DailyTankerReading">
           <Key>
@@ -77,9 +97,11 @@
           <Property Name="DailyStartReading" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="DailyEndReading" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Date" Type="date" Nullable="false" />
-          <Property Name="CreatedOn" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
-          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="bigint" />
+          <Property Name="Updatedby" Type="bigint" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedOn" Type="datetime" />
         </EntityType>
         <EntityType Name="DenominationType">
           <Key>
@@ -100,6 +122,10 @@
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Description" Type="nvarchar(max)" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="bigint" />
+          <Property Name="Updatedby" Type="bigint" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedOn" Type="datetime" />
           <Property Name="Type" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Meter">
@@ -112,6 +138,10 @@
           <Property Name="Type" Type="nvarchar" MaxLength="50" />
           <Property Name="Description" Type="nvarchar(max)" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="bigint" />
+          <Property Name="Updatedby" Type="bigint" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedOn" Type="datetime" />
         </EntityType>
         <EntityType Name="OperationMaster">
           <Key>
@@ -151,6 +181,10 @@
           <Property Name="FuelQuantity" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="UniqueTokenNumber" Type="nvarchar" MaxLength="50" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="bigint" />
+          <Property Name="Updatedby" Type="bigint" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedOn" Type="datetime" />
         </EntityType>
         <EntityType Name="Tanker">
           <Key>
@@ -162,6 +196,10 @@
           <Property Name="Size" Type="nvarchar" MaxLength="50" />
           <Property Name="Description" Type="nvarchar(max)" />
           <Property Name="IsActive" Type="bit" />
+          <Property Name="CreatedBy" Type="bigint" />
+          <Property Name="Updatedby" Type="bigint" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedOn" Type="datetime" />
         </EntityType>
         <EntityType Name="UserMaster">
           <Key>
@@ -169,13 +207,17 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="500" Nullable="false" />
           <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="EmailId" Type="nvarchar" MaxLength="50" />
           <Property Name="Mobile" Type="int" Nullable="false" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
           <Property Name="EmpId" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedBy" Type="bigint" />
+          <Property Name="Updatedby" Type="bigint" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedOn" Type="datetime" />
         </EntityType>
         <EntityType Name="UserRoleMapping">
           <Key>
@@ -342,6 +384,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="ppmsModelStoreContainer">
+          <EntitySet Name="__RefactorLog" EntityType="Self.__RefactorLog" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CustomerType" EntityType="Self.CustomerType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DailyCashSaleDenomination" EntityType="Self.DailyCashSaleDenomination" Schema="dbo" store:Type="Tables" />
@@ -411,10 +454,17 @@
             <End Role="UserRoleMapping" EntitySet="UserRoleMapping" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ppmsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__RefactorLog">
+          <Key>
+            <PropertyRef Name="OperationKey" />
+          </Key>
+          <Property Name="OperationKey" Type="Guid" Nullable="false" />
+        </EntityType>
         <EntityType Name="Customer">
           <Key>
             <PropertyRef Name="Id" />
@@ -431,6 +481,10 @@
           <Property Name="PinCode" Type="Int32" />
           <Property Name="CustomerTypeId" Type="Int32" Nullable="false" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int64" />
+          <Property Name="Updatedby" Type="Int64" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
           <NavigationProperty Name="CustomerType" Relationship="Self.FK_Customer_CustomerType" FromRole="Customer" ToRole="CustomerType" />
           <NavigationProperty Name="Sales" Relationship="Self.FK_Sale_Customer" FromRole="Customer" ToRole="Sale" />
         </EntityType>
@@ -441,6 +495,10 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TypeName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int64" />
+          <Property Name="Updatedby" Type="Int64" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Customers" Relationship="Self.FK_Customer_CustomerType" FromRole="CustomerType" ToRole="Customer" />
         </EntityType>
         <EntityType Name="DailyCashSaleDenomination">
@@ -452,9 +510,11 @@
           <Property Name="DenominationTypeId" Type="Int32" Nullable="false" />
           <Property Name="Count" Type="Int32" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="CreatedOn" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
-          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int64" />
+          <Property Name="Updatedby" Type="Int64" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
           <NavigationProperty Name="DenominationType" Relationship="Self.FK_DailyCashSaleDenomination_DenominationType" FromRole="DailyCashSaleDenomination" ToRole="DenominationType" />
         </EntityType>
         <EntityType Name="DailyFuelCost">
@@ -465,10 +525,12 @@
           <Property Name="FuelTypeId" Type="Int32" Nullable="false" />
           <Property Name="CostPerLiter" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="CreatedOn" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
-          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Fuel" Relationship="ppmsModel.FK_DailyFuelCost_FuelType1" FromRole="DailyFuelCost" ToRole="Fuel" />
+          <Property Name="CreatedBy" Type="Int64" />
+          <Property Name="Updatedby" Type="Int64" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Fuel" Relationship="Self.FK_DailyFuelCost_FuelType" FromRole="DailyFuelCost" ToRole="Fuel" />
         </EntityType>
         <EntityType Name="DailyMeterReading">
           <Key>
@@ -479,9 +541,11 @@
           <Property Name="DayStartReading" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="DayEndReading" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="CreatedOn" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
-          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int64" />
+          <Property Name="Updatedby" Type="Int64" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Meter" Relationship="Self.FK_DailyMeterReading_Meter" FromRole="DailyMeterReading" ToRole="Meter" />
         </EntityType>
         <EntityType Name="DailyTankerReading">
@@ -493,9 +557,11 @@
           <Property Name="DailyStartReading" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="DailyEndReading" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="CreatedOn" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
-          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int64" />
+          <Property Name="Updatedby" Type="Int64" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Tanker" Relationship="Self.FK_DailyTankerReading_Tanker" FromRole="DailyTankerReading" ToRole="Tanker" />
         </EntityType>
         <EntityType Name="DenominationType">
@@ -510,6 +576,24 @@
           <Property Name="CreatedOn" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
           <NavigationProperty Name="DailyCashSaleDenominations" Relationship="Self.FK_DailyCashSaleDenomination_DenominationType" FromRole="DenominationType" ToRole="DailyCashSaleDenomination" />
         </EntityType>
+        <EntityType Name="Fuel">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int64" />
+          <Property Name="Updatedby" Type="Int64" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DailyFuelCosts" Relationship="Self.FK_DailyFuelCost_FuelType" FromRole="Fuel" ToRole="DailyFuelCost" />
+          <NavigationProperty Name="Meters" Relationship="Self.FK_Meter_FuelType" FromRole="Fuel" ToRole="Meter" />
+          <NavigationProperty Name="Sales" Relationship="Self.FK_Sale_FuelType" FromRole="Fuel" ToRole="Sale" />
+          <NavigationProperty Name="Tankers" Relationship="Self.FK_Tanker_FuelType" FromRole="Fuel" ToRole="Tanker" />
+        </EntityType>
         <EntityType Name="Meter">
           <Key>
             <PropertyRef Name="Id" />
@@ -520,8 +604,12 @@
           <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int64" />
+          <Property Name="Updatedby" Type="Int64" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
           <NavigationProperty Name="DailyMeterReadings" Relationship="Self.FK_DailyMeterReading_Meter" FromRole="Meter" ToRole="DailyMeterReading" />
-          <NavigationProperty Name="Fuel" Relationship="ppmsModel.FK_Meter_FuelType1" FromRole="Meter" ToRole="Fuel" />
+          <NavigationProperty Name="Fuel" Relationship="Self.FK_Meter_FuelType" FromRole="Meter" ToRole="Fuel" />
         </EntityType>
         <EntityType Name="OperationMaster">
           <Key>
@@ -566,8 +654,12 @@
           <Property Name="FuelQuantity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="UniqueTokenNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int64" />
+          <Property Name="Updatedby" Type="Int64" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Customer" Relationship="Self.FK_Sale_Customer" FromRole="Sale" ToRole="Customer" />
-          <NavigationProperty Name="Fuel" Relationship="ppmsModel.FK_Sale_FuelType1" FromRole="Sale" ToRole="Fuel" />
+          <NavigationProperty Name="Fuel" Relationship="Self.FK_Sale_FuelType" FromRole="Sale" ToRole="Fuel" />
         </EntityType>
         <EntityType Name="Tanker">
           <Key>
@@ -579,8 +671,12 @@
           <Property Name="Size" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreatedBy" Type="Int64" />
+          <Property Name="Updatedby" Type="Int64" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
           <NavigationProperty Name="DailyTankerReadings" Relationship="Self.FK_DailyTankerReading_Tanker" FromRole="Tanker" ToRole="DailyTankerReading" />
-          <NavigationProperty Name="Fuel" Relationship="ppmsModel.FK_Tanker_FuelType1" FromRole="Tanker" ToRole="Fuel" />
+          <NavigationProperty Name="Fuel" Relationship="Self.FK_Tanker_FuelType" FromRole="Tanker" ToRole="Fuel" />
         </EntityType>
         <EntityType Name="UserMaster">
           <Key>
@@ -588,13 +684,17 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="EmailId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Mobile" Type="Int32" Nullable="false" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <Property Name="EmpId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="Int64" />
+          <Property Name="Updatedby" Type="Int64" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
           <NavigationProperty Name="UserRoleMappings" Relationship="Self.FK_UserRoleMapping_UserMaster" FromRole="UserMaster" ToRole="UserRoleMapping" />
         </EntityType>
         <EntityType Name="UserRoleMapping">
@@ -643,6 +743,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_DailyFuelCost_FuelType">
+          <End Role="Fuel" Type="Self.Fuel" Multiplicity="1" />
+          <End Role="DailyFuelCost" Type="Self.DailyFuelCost" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fuel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DailyFuelCost">
+              <PropertyRef Name="FuelTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_DailyMeterReading_Meter">
           <End Role="Meter" Type="Self.Meter" Multiplicity="1" />
           <End Role="DailyMeterReading" Type="Self.DailyMeterReading" Multiplicity="*" />
@@ -664,6 +776,42 @@
             </Principal>
             <Dependent Role="DailyTankerReading">
               <PropertyRef Name="TankerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Meter_FuelType">
+          <End Role="Fuel" Type="Self.Fuel" Multiplicity="1" />
+          <End Role="Meter" Type="Self.Meter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fuel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Meter">
+              <PropertyRef Name="FuelTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sale_FuelType">
+          <End Role="Fuel" Type="Self.Fuel" Multiplicity="1" />
+          <End Role="Sale" Type="Self.Sale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fuel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sale">
+              <PropertyRef Name="FuelTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tanker_FuelType">
+          <End Role="Fuel" Type="Self.Fuel" Multiplicity="1" />
+          <End Role="Tanker" Type="Self.Tanker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fuel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Tanker">
+              <PropertyRef Name="FuelTypeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -716,6 +864,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="ppmsEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__RefactorLog" EntityType="Self.C__RefactorLog" />
           <EntitySet Name="Customers" EntityType="Self.Customer" />
           <EntitySet Name="CustomerTypes" EntityType="Self.CustomerType" />
           <EntitySet Name="DailyCashSaleDenominations" EntityType="Self.DailyCashSaleDenomination" />
@@ -723,6 +872,7 @@
           <EntitySet Name="DailyMeterReadings" EntityType="Self.DailyMeterReading" />
           <EntitySet Name="DailyTankerReadings" EntityType="Self.DailyTankerReading" />
           <EntitySet Name="DenominationTypes" EntityType="Self.DenominationType" />
+          <EntitySet Name="Fuels" EntityType="Self.Fuel" />
           <EntitySet Name="Meters" EntityType="Self.Meter" />
           <EntitySet Name="OperationMasters" EntityType="Self.OperationMaster" />
           <EntitySet Name="RoleMasters" EntityType="Self.RoleMaster" />
@@ -743,6 +893,10 @@
             <End Role="DenominationType" EntitySet="DenominationTypes" />
             <End Role="DailyCashSaleDenomination" EntitySet="DailyCashSaleDenominations" />
           </AssociationSet>
+          <AssociationSet Name="FK_DailyFuelCost_FuelType" Association="Self.FK_DailyFuelCost_FuelType">
+            <End Role="Fuel" EntitySet="Fuels" />
+            <End Role="DailyFuelCost" EntitySet="DailyFuelCosts" />
+          </AssociationSet>
           <AssociationSet Name="FK_DailyMeterReading_Meter" Association="Self.FK_DailyMeterReading_Meter">
             <End Role="Meter" EntitySet="Meters" />
             <End Role="DailyMeterReading" EntitySet="DailyMeterReadings" />
@@ -750,6 +904,18 @@
           <AssociationSet Name="FK_DailyTankerReading_Tanker" Association="Self.FK_DailyTankerReading_Tanker">
             <End Role="Tanker" EntitySet="Tankers" />
             <End Role="DailyTankerReading" EntitySet="DailyTankerReadings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Meter_FuelType" Association="Self.FK_Meter_FuelType">
+            <End Role="Fuel" EntitySet="Fuels" />
+            <End Role="Meter" EntitySet="Meters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sale_FuelType" Association="Self.FK_Sale_FuelType">
+            <End Role="Fuel" EntitySet="Fuels" />
+            <End Role="Sale" EntitySet="Sales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tanker_FuelType" Association="Self.FK_Tanker_FuelType">
+            <End Role="Fuel" EntitySet="Fuels" />
+            <End Role="Tanker" EntitySet="Tankers" />
           </AssociationSet>
           <AssociationSet Name="FK_RoleOperationMapping_OperationMaster" Association="Self.FK_RoleOperationMapping_OperationMaster">
             <End Role="OperationMaster" EntitySet="OperationMasters" />
@@ -767,92 +933,20 @@
             <End Role="UserMaster" EntitySet="UserMasters" />
             <End Role="UserRoleMapping" EntitySet="UserRoleMappings" />
           </AssociationSet>
-          <EntitySet Name="Fuels" EntityType="ppmsModel.Fuel" />
-          <AssociationSet Name="FK_DailyFuelCost_FuelType1" Association="ppmsModel.FK_DailyFuelCost_FuelType1">
-            <End Role="Fuel" EntitySet="Fuels" />
-            <End Role="DailyFuelCost" EntitySet="DailyFuelCosts" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Meter_FuelType1" Association="ppmsModel.FK_Meter_FuelType1">
-            <End Role="Fuel" EntitySet="Fuels" />
-            <End Role="Meter" EntitySet="Meters" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Sale_FuelType1" Association="ppmsModel.FK_Sale_FuelType1">
-            <End Role="Fuel" EntitySet="Fuels" />
-            <End Role="Sale" EntitySet="Sales" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Tanker_FuelType1" Association="ppmsModel.FK_Tanker_FuelType1">
-            <End Role="Fuel" EntitySet="Fuels" />
-            <End Role="Tanker" EntitySet="Tankers" />
-          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="Fuel">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="IsActive" Type="Boolean" Nullable="false" />
-          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="DailyFuelCosts" Relationship="ppmsModel.FK_DailyFuelCost_FuelType1" FromRole="Fuel" ToRole="DailyFuelCost" />
-          <NavigationProperty Name="Meters" Relationship="ppmsModel.FK_Meter_FuelType1" FromRole="Fuel" ToRole="Meter" />
-          <NavigationProperty Name="Sales" Relationship="ppmsModel.FK_Sale_FuelType1" FromRole="Fuel" ToRole="Sale" />
-          <NavigationProperty Name="Tankers" Relationship="ppmsModel.FK_Tanker_FuelType1" FromRole="Fuel" ToRole="Tanker" />
-        </EntityType>
-        <Association Name="FK_DailyFuelCost_FuelType1">
-          <End Type="ppmsModel.Fuel" Role="Fuel" Multiplicity="1" />
-          <End Type="ppmsModel.DailyFuelCost" Role="DailyFuelCost" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Fuel">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="DailyFuelCost">
-              <PropertyRef Name="FuelTypeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Meter_FuelType1">
-          <End Type="ppmsModel.Fuel" Role="Fuel" Multiplicity="1" />
-          <End Type="ppmsModel.Meter" Role="Meter" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Fuel">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Meter">
-              <PropertyRef Name="FuelTypeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Sale_FuelType1">
-          <End Type="ppmsModel.Fuel" Role="Fuel" Multiplicity="1" />
-          <End Type="ppmsModel.Sale" Role="Sale" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Fuel">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Sale">
-              <PropertyRef Name="FuelTypeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Tanker_FuelType1">
-          <End Type="ppmsModel.Fuel" Role="Fuel" Multiplicity="1" />
-          <End Type="ppmsModel.Tanker" Role="Tanker" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Fuel">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Tanker">
-              <PropertyRef Name="FuelTypeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="ppmsModelStoreContainer" CdmEntityContainer="ppmsEntities">
+          <EntitySetMapping Name="C__RefactorLog">
+            <EntityTypeMapping TypeName="ppmsModel.C__RefactorLog">
+              <MappingFragment StoreEntitySet="__RefactorLog">
+                <ScalarProperty Name="OperationKey" ColumnName="OperationKey" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Customers">
             <EntityTypeMapping TypeName="ppmsModel.Customer">
               <MappingFragment StoreEntitySet="Customer">
@@ -868,6 +962,10 @@
                 <ScalarProperty Name="PinCode" ColumnName="PinCode" />
                 <ScalarProperty Name="CustomerTypeId" ColumnName="CustomerTypeId" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Updatedby" ColumnName="Updatedby" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -877,6 +975,10 @@
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="TypeName" ColumnName="TypeName" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Updatedby" ColumnName="Updatedby" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -888,9 +990,11 @@
                 <ScalarProperty Name="DenominationTypeId" ColumnName="DenominationTypeId" />
                 <ScalarProperty Name="Count" ColumnName="Count" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Updatedby" ColumnName="Updatedby" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -901,9 +1005,11 @@
                 <ScalarProperty Name="FuelTypeId" ColumnName="FuelTypeId" />
                 <ScalarProperty Name="CostPerLiter" ColumnName="CostPerLiter" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Updatedby" ColumnName="Updatedby" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -915,9 +1021,11 @@
                 <ScalarProperty Name="DayStartReading" ColumnName="DayStartReading" />
                 <ScalarProperty Name="DayEndReading" ColumnName="DayEndReading" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Updatedby" ColumnName="Updatedby" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -929,9 +1037,11 @@
                 <ScalarProperty Name="DailyStartReading" ColumnName="DailyStartReading" />
                 <ScalarProperty Name="DailyEndReading" ColumnName="DailyEndReading" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Updatedby" ColumnName="Updatedby" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -947,6 +1057,21 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Fuels">
+            <EntityTypeMapping TypeName="ppmsModel.Fuel">
+              <MappingFragment StoreEntitySet="Fuel">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Updatedby" ColumnName="Updatedby" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Meters">
             <EntityTypeMapping TypeName="ppmsModel.Meter">
               <MappingFragment StoreEntitySet="Meter">
@@ -956,6 +1081,10 @@
                 <ScalarProperty Name="Type" ColumnName="Type" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Updatedby" ColumnName="Updatedby" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -999,6 +1128,10 @@
                 <ScalarProperty Name="FuelQuantity" ColumnName="FuelQuantity" />
                 <ScalarProperty Name="UniqueTokenNumber" ColumnName="UniqueTokenNumber" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Updatedby" ColumnName="Updatedby" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1011,6 +1144,10 @@
                 <ScalarProperty Name="Size" ColumnName="Size" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Updatedby" ColumnName="Updatedby" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1026,6 +1163,10 @@
                 <ScalarProperty Name="Mobile" ColumnName="Mobile" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="EmpId" ColumnName="EmpId" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Updatedby" ColumnName="Updatedby" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1035,17 +1176,6 @@
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="RoleId" ColumnName="RoleId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Fuels">
-            <EntityTypeMapping TypeName="ppmsModel.Fuel">
-              <MappingFragment StoreEntitySet="Fuel">
-                <ScalarProperty Name="Type" ColumnName="Type" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

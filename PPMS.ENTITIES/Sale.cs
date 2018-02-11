@@ -24,6 +24,10 @@ namespace PPMS.ENTITIES
         public string FuelQuantity { get; set; }
         public string UniqueTokenNumber { get; set; }
         public bool IsActive { get; set; }
+        public Nullable<long> CreatedBy { get; set; }
+        public Nullable<long> Updatedby { get; set; }
+        public Nullable<System.DateTime> CreatedOn { get; set; }
+        public Nullable<System.DateTime> UpdatedOn { get; set; }
     
         public virtual Customer Customer { get; set; }
         public virtual Fuel Fuel { get; set; }

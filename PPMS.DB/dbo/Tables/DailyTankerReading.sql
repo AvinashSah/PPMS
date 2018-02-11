@@ -4,9 +4,11 @@
     [DailyStartReading] NVARCHAR (50) NOT NULL,
     [DailyEndReading]   NVARCHAR (50) NOT NULL,
     [Date]              DATE          NOT NULL,
-    [CreatedOn]         ROWVERSION    NOT NULL,
-    [CreatedBy]         NVARCHAR (50) NULL,
     [IsActive]          BIT           CONSTRAINT [DF_DailyTankerReading_IsActive] DEFAULT ((1)) NOT NULL,
+	[CreatedBy] BIGINT NULL, 
+    [Updatedby] BIGINT NULL, 
+    [CreatedOn] DATETIME NULL DEFAULT GETDATE(), 
+    [UpdatedOn] DATETIME NULL DEFAULT GETDATE(), 
     CONSTRAINT [PK_DailyTankerReading] PRIMARY KEY CLUSTERED ([Id] ASC),
     CONSTRAINT [FK_DailyTankerReading_Tanker] FOREIGN KEY ([TankerId]) REFERENCES [dbo].[Tanker] ([Id])
 );

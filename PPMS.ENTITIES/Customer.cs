@@ -32,6 +32,10 @@ namespace PPMS.ENTITIES
         public Nullable<int> PinCode { get; set; }
         public int CustomerTypeId { get; set; }
         public bool IsActive { get; set; }
+        public Nullable<long> CreatedBy { get; set; }
+        public Nullable<long> Updatedby { get; set; }
+        public Nullable<System.DateTime> CreatedOn { get; set; }
+        public Nullable<System.DateTime> UpdatedOn { get; set; }
     
         public virtual CustomerType CustomerType { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

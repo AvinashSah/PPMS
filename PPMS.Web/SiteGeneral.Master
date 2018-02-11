@@ -42,7 +42,7 @@
 
 			<div class="collapse navbar-collapse navbar-right">
 				<ul class="nav navbar-nav">
-					<li class="active">
+					<li class="dynamicMenu active" id="Dashboard" runat="server">
 						<a href="Dashboard.aspx"><span class="glyphicon glyphicon-home"></span> Home</a>
 					</li>
 					<li class="dropdown">
@@ -50,16 +50,19 @@
 							<span class="glyphicon glyphicon-wrench"></span> Services <i class="fa fa-angle-down"></i>
 						</a>
 						<ul class="dropdown-menu">
-							<li>
+							<li id="ManageCustomer" class="dynamicMenu" runat="server">
 								<a href="ManageCustomer.aspx"><span class="glyphicon glyphicon-user"></span> Customer</a>
 							</li>
-							<li>
+							<li id="ManageTanks" class="dynamicMenu" runat="server">
 								<a href="ManageTanks.aspx"><span class="glyphicon glyphicon-dashboard"></span> Tanker</a>
 							</li>
-							<li>
+							<li id="ManageFuel" runat="server">
 								<a href="ManageFuel.aspx"><span class="glyphicon glyphicon-tint"></span> Fuel</a>
 							</li>
-                            <li>
+                            <li id="ManageMeters" class="dynamicMenu" runat="server">
+								<a href="ManageMeters.aspx"><span class="glyphicon glyphicon-circle-arrow-right"></span> Meters</a>
+							</li>
+                            <li id="CreateSale" class="dynamicMenu" runat="server">
 								<a href="Sale.aspx"><span class="glyphicon glyphicon-tint"></span> Sale</a>
 							</li>
 						</ul>
@@ -68,7 +71,7 @@
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 							<span class="glyphicon glyphicon-hdd"></span> Reports <i class="fa fa-angle-down"></i>
 						</a>
-						<ul class="dropdown-menu">
+						<ul class="dynamicMenu dropdown-menu" id="ViewReports" runat="server">
 							<li>
 								<a href="SalesReport.aspx"><span class="glyphicon glyphicon-list-alt"></span> Sales</a>
 							</li>
@@ -77,6 +80,7 @@
 							</li>
 						</ul>
 					</li>
+                    <li><a href="#" id="logOutBtn" onserverclick="logout" runat="server"><i class="glyphicon glyphicon-log-out" style="padding-right: 10px"></i>Logout</a></li>
 				</ul>
 			</div>
 		</div>
@@ -86,7 +90,7 @@
 
         </div>
 
-        <div style="margin-top:15px">
+        <div style="margin-top: 15px">
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
         </div>
@@ -117,6 +121,7 @@
                     } else {
                         jQuery('.back-to-top').fadeOut(duration);
                     }
+                    $('.dynamicMenu').hide();
                 });
 
                 jQuery('.back-to-top').click(function (event) {

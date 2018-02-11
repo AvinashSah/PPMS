@@ -19,9 +19,11 @@ namespace PPMS.ENTITIES
         public string DayStartReading { get; set; }
         public string DayEndReading { get; set; }
         public System.DateTime Date { get; set; }
-        public byte[] CreatedOn { get; set; }
-        public string CreatedBy { get; set; }
         public bool IsActive { get; set; }
+        public Nullable<long> CreatedBy { get; set; }
+        public Nullable<long> Updatedby { get; set; }
+        public Nullable<System.DateTime> CreatedOn { get; set; }
+        public Nullable<System.DateTime> UpdatedOn { get; set; }
     
         public virtual Meter Meter { get; set; }
     }

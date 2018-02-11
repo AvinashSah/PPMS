@@ -128,6 +128,7 @@
     <Content Include="SiteGeneral.Master" />
     <Content Include="SiteAdmin.Master" />
     <Content Include="Site.Mobile.Master" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
