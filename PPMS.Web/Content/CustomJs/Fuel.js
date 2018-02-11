@@ -113,14 +113,16 @@
                 var json = jQuery.parseJSON(data);
                 var response = json.d;
                 if (response.submited) {
+                    BindFuelList();
                     $("#editFuelModal").modal('hide');
                     alert(response.message);
-                    BindFuelList();
+                    event.preventDefault();
                 }
                 else {
+                    BindFuelList();
                     $("#editFuelModal").modal('hide');
                     alert(response.message);
-                    BindFuelList();
+                    event.preventDefault();
                 }
             }
         });
@@ -150,14 +152,16 @@
                 var json = jQuery.parseJSON(data);
                 var response = json.d;
                 if (response.submited) {
+                    BindFuelList();
                     $("#createFuelModel").modal('hide');
                     alert(response.message);
-                    BindFuelList();
+                    event.preventDefault();
                 }
                 else {
+                    BindFuelList();
                     $("#createFuelModel").modal('hide');
                     alert(response.message);
-                    BindFuelList();
+                    event.preventDefault();
                 }
             }
         });

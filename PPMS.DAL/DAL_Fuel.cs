@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
-using System.Globalization;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using PPMS.ENTITIES;
 
 namespace PPMS.DAL
@@ -55,6 +51,7 @@ namespace PPMS.DAL
                 dailyFuelCost.Updatedby = Convert.ToInt64(userOpMap.UserID);
                 dailyFuelCost.UpdatedOn = DateTime.Now;
                 dailyFuelCost.CreatedOn = DateTime.Now;
+                dailyFuelCost.IsActive = true;
 
                 dbContext.DailyFuelCosts.Add(dailyFuelCost);
                 dbContext.SaveChanges();//this generates the Id for customer
@@ -86,6 +83,7 @@ namespace PPMS.DAL
                     dailyFuelCost.Updatedby = Convert.ToInt64(userOpMap.UserID);
                     dailyFuelCost.UpdatedOn = DateTime.Now;
                     dailyFuelCost.CreatedOn = DateTime.Now;
+                    dailyFuelCost.IsActive = true;
                     dailyFuelCost.FuelTypeId = fuelID;
 
                     dbContext.DailyFuelCosts.Add(dailyFuelCost);

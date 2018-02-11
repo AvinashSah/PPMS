@@ -31,6 +31,15 @@ namespace PPMS.Web {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Dashboard;
         
         /// <summary>
+        /// servicesMainLi control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl servicesMainLi;
+        
+        /// <summary>
         /// ManageCustomer control.
         /// </summary>
         /// <remarks>
@@ -76,13 +85,31 @@ namespace PPMS.Web {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl CreateSale;
         
         /// <summary>
-        /// ViewReports control.
+        /// reportMainLi control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ViewReports;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl reportMainLi;
+        
+        /// <summary>
+        /// ViewSalesReports control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ViewSalesReports;
+        
+        /// <summary>
+        /// ViewInventoryReports control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ViewInventoryReports;
         
         /// <summary>
         /// logOutBtn control.

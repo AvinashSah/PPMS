@@ -30,7 +30,146 @@ namespace PPMS.Web
                         foreach (Operations op in userOpMap.OperationsList)
                         {
                             var ctrl = this.FindControl(op.OperationName);
-                            ctrl.Visible = true;
+                            switch (ctrl.ID)
+                            {
+                                case "Dashboard":
+                                    Dashboard.Attributes.Add("style", "display:block");
+                                    break;
+                                case "ManageCustomer":
+                                    ManageCustomer.Attributes.Add("style", "display:block");
+                                    break;
+                                case "ManageTanks":
+                                    ManageTanks.Attributes.Add("style", "display:block");
+                                    break;
+                                case "ManageFuel":
+                                    ManageFuel.Attributes.Add("style", "display:block");
+                                    break;
+                                case "CreateSale":
+                                    CreateSale.Attributes.Add("style", "display:block");
+                                    break;
+                                case "ViewSalesReports":
+                                    ViewSalesReports.Attributes.Add("style", "display:block");
+                                    break;
+                                case "ViewInventoryReports":
+                                    ViewInventoryReports.Attributes.Add("style", "display:block");
+                                    break;
+                                default:
+                                    ShowAllControls();
+                                    break;
+                            }
+                        }
+
+                        string pageName = GetCurrentPageName();
+                        switch (pageName)
+                        {
+                            case "Dashboard":
+                                Dashboard.Attributes.Add("class", "active");
+                                ManageCustomer.Attributes["class"].Replace("active", "");
+                                ManageTanks.Attributes["class"].Replace("active", "");
+                                ManageFuel.Attributes["class"].Replace("active", "");
+                                CreateSale.Attributes["class"].Replace("active", "");
+                                ViewInventoryReports.Attributes["class"].Replace("active", "");
+                                CreateSale.Attributes["class"].Replace("active", "");
+                                ViewSalesReports.Attributes["class"].Replace("active", "");
+                                reportMainLi.Attributes["class"].Replace("active", "dropdown");
+                                servicesMainLi.Attributes["class"].Replace("active", "dropdown");
+                                break;
+                            case "ManageCustomer":
+                                ManageCustomer.Attributes.Add("class", "active");
+                                Dashboard.Attributes["class"].Replace("active", "");
+                                ManageTanks.Attributes["class"].Replace("active", "");
+                                ManageFuel.Attributes["class"].Replace("active", "");
+                                CreateSale.Attributes["class"].Replace("active", "");
+                                ViewInventoryReports.Attributes["class"].Replace("active", "");
+                                CreateSale.Attributes["class"].Replace("active", "");
+                                ViewSalesReports.Attributes["class"].Replace("active", "");
+                                reportMainLi.Attributes["class"].Replace("active", "dropdown");
+                                servicesMainLi.Attributes.Add("class", "dropdown active");
+                                break;
+                            case "ManageTanks":
+                                ManageTanks.Attributes.Add("class", "active");
+                                Dashboard.Attributes["class"].Replace("active", "");
+                                ManageCustomer.Attributes["class"].Replace("active", "");
+                                ManageFuel.Attributes["class"].Replace("active", "");
+                                CreateSale.Attributes["class"].Replace("active", "");
+                                ViewInventoryReports.Attributes["class"].Replace("active", "");
+                                CreateSale.Attributes["class"].Replace("active", "");
+                                ViewSalesReports.Attributes["class"].Replace("active", "");
+                                reportMainLi.Attributes["class"].Replace("active", "dropdown");
+                                servicesMainLi.Attributes.Add("class", "dropdown active");
+                                break;
+                            case "ManageFuel":
+                                ManageFuel.Attributes.Add("class", "active");
+                                Dashboard.Attributes["class"].Replace("active", "");
+                                ManageCustomer.Attributes["class"].Replace("active", "");
+                                ManageTanks.Attributes["class"].Replace("active", "");
+                                CreateSale.Attributes["class"].Replace("active", "");
+                                ViewInventoryReports.Attributes["class"].Replace("active", "");
+                                CreateSale.Attributes["class"].Replace("active", "");
+                                ViewSalesReports.Attributes["class"].Replace("active", "");
+                                reportMainLi.Attributes["class"].Replace("active", "dropdown");
+                                servicesMainLi.Attributes.Add("class", "dropdown active");
+                                break;
+                            case "CreateSale":
+                                CreateSale.Attributes.Add("class", "active");
+                                Dashboard.Attributes["class"].Replace("active", "");
+                                ManageCustomer.Attributes["class"].Replace("active", "");
+                                ManageTanks.Attributes["class"].Replace("active", "");
+                                ManageFuel.Attributes["class"].Replace("active", "");
+                                ViewInventoryReports.Attributes["class"].Replace("active", "");
+                                CreateSale.Attributes["class"].Replace("active", "");
+                                ViewSalesReports.Attributes["class"].Replace("active", "");
+                                reportMainLi.Attributes["class"].Replace("active", "dropdown");
+                                servicesMainLi.Attributes.Add("class", "dropdown active");
+                                break;
+                            case "InventoryReport":
+                                ViewInventoryReports.Attributes.Add("class", "active");
+                                Dashboard.Attributes["class"].Replace("active", "");
+                                ManageCustomer.Attributes["class"].Replace("active", "");
+                                ManageTanks.Attributes["class"].Replace("active", "");
+                                ManageFuel.Attributes["class"].Replace("active", "");
+                                CreateSale.Attributes["class"].Replace("active", "");
+                                CreateSale.Attributes["class"].Replace("active", "");
+                                ViewSalesReports.Attributes["class"].Replace("active", "");
+                                reportMainLi.Attributes.Add("class", "dropdown active");
+                                servicesMainLi.Attributes["class"].Replace("active", "dropdown");
+                                break;
+                            case "SalesReport":
+                                ViewSalesReports.Attributes.Add("class", "active");
+                                ViewInventoryReports.Attributes["class"].Replace("active", "");
+                                Dashboard.Attributes["class"].Replace("active", "");
+                                ManageCustomer.Attributes["class"].Replace("active", "");
+                                ManageTanks.Attributes["class"].Replace("active", "");
+                                ManageFuel.Attributes["class"].Replace("active", "");
+                                CreateSale.Attributes["class"].Replace("active", "");
+                                CreateSale.Attributes["class"].Replace("active", "");
+                                reportMainLi.Attributes.Add("class", "dropdown active");
+                                servicesMainLi.Attributes["class"].Replace("active", "dropdown");
+                                break;
+                            case "Sale":
+                                CreateSale.Attributes.Add("class", "active");
+                                Dashboard.Attributes["class"].Replace("active", "");
+                                ManageCustomer.Attributes["class"].Replace("active", "");
+                                ManageTanks.Attributes["class"].Replace("active", "");
+                                ManageFuel.Attributes["class"].Replace("active", "");
+                                CreateSale.Attributes["class"].Replace("active", "");
+                                ViewInventoryReports.Attributes["class"].Replace("active", "");
+                                ViewSalesReports.Attributes["class"].Replace("active", "");
+                                reportMainLi.Attributes["class"].Replace("active", "dropdown");
+                                servicesMainLi.Attributes.Add("class", "dropdown active");
+                                break;
+                            default:
+                                Dashboard.Attributes.Add("class", "active");
+                                ManageCustomer.Attributes["class"].Replace("active", "");
+                                ManageTanks.Attributes["class"].Replace("active", "");
+                                ManageFuel.Attributes["class"].Replace("active", "");
+                                CreateSale.Attributes["class"].Replace("active", "");
+                                ViewInventoryReports.Attributes["class"].Replace("active", "");
+                                CreateSale.Attributes["class"].Replace("active", "");
+                                ViewSalesReports.Attributes["class"].Replace("active", "");
+                                reportMainLi.Attributes["class"].Replace("active", "dropdown");
+                                servicesMainLi.Attributes["class"].Replace("active", "dropdown");
+                                break;
                         }
                     }
                 }
@@ -43,6 +182,18 @@ namespace PPMS.Web
             }
         }
 
+        private void ShowAllControls()
+        {
+            Dashboard.Attributes.Add("style", "display:block");
+            ManageCustomer.Attributes.Add("style", "display:block");
+            ManageTanks.Attributes.Add("style", "display:block");
+            ManageFuel.Attributes.Add("style", "display:block");
+            ManageMeters.Attributes.Add("style", "display:block");
+            CreateSale.Attributes.Add("style", "display:block");
+            ViewSalesReports.Attributes.Add("style", "display:block");
+            ViewInventoryReports.Attributes.Add("style", "display:block");
+        }
+
         private void HideControls()
         {
             Dashboard.Attributes.CssStyle[HtmlTextWriterStyle.Display] = "none";
@@ -51,13 +202,22 @@ namespace PPMS.Web
             ManageFuel.Attributes.CssStyle[HtmlTextWriterStyle.Display] = "none";
             ManageMeters.Attributes.CssStyle[HtmlTextWriterStyle.Display] = "none";
             CreateSale.Attributes.CssStyle[HtmlTextWriterStyle.Display] = "none";
-            ViewReports.Attributes.CssStyle[HtmlTextWriterStyle.Display] = "none";
+            ViewSalesReports.Attributes.CssStyle[HtmlTextWriterStyle.Display] = "none";
+            ViewInventoryReports.Attributes.CssStyle[HtmlTextWriterStyle.Display] = "none";
         }
 
         protected void logout(object sender, EventArgs e)
         {
             FormsAuthentication.SignOut();
             Response.Redirect("~/Login.aspx");
+        }
+
+        public string GetCurrentPageName()
+        {
+            string sPath = System.Web.HttpContext.Current.Request.Url.AbsolutePath;
+            System.IO.FileInfo oInfo = new System.IO.FileInfo(sPath);
+            string sRet = oInfo.Name;
+            return sRet;
         }
     }
 }
