@@ -826,7 +826,7 @@ input.search-form:hover {
 
 .panel-default > .panel-heading, .panel
 {
-    background-color: #666699;
+    background-color: #f2f2f2;
     border: 0 none;
     box-shadow: none;
 }
@@ -834,7 +834,7 @@ input.search-form:hover {
 .panel-default > .panel-heading + .panel-collapse .panel-body
 {
     background: #fff;
-    color: #858586;
+    color: #fff;
 }
 
 .panel-body{

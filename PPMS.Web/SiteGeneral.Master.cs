@@ -17,6 +17,7 @@ namespace PPMS.Web
                 {
                     if (HttpContext.Current.User.Identity is FormsIdentity)
                     {
+                        HideControls();
                         FormsIdentity id = (FormsIdentity)HttpContext.Current.User.Identity;
                         FormsAuthenticationTicket ticket = id.Ticket;
                         string userData = ticket.UserData;
@@ -28,8 +29,8 @@ namespace PPMS.Web
                         userOpMap = bAL_Common.GetUserOperationMapping(HttpContext.Current.User.Identity.Name, userRole);
                         foreach (Operations op in userOpMap.OperationsList)
                         {
-                            Control control = FindControl(op.OperationName);
-                            control.Visible = true;
+                            var ctrl = this.FindControl(op.OperationName);
+                            ctrl.Visible = true;
                         }
                     }
                 }
@@ -40,6 +41,17 @@ namespace PPMS.Web
                 }
 
             }
+        }
+
+        private void HideControls()
+        {
+            Dashboard.Attributes.CssStyle[HtmlTextWriterStyle.Visibility] = "hidden";
+            ManageCustomer.Attributes.CssStyle[HtmlTextWriterStyle.Visibility] = "hidden";
+            ManageTanks.Attributes.CssStyle[HtmlTextWriterStyle.Visibility] = "hidden";
+            ManageFuel.Attributes.CssStyle[HtmlTextWriterStyle.Visibility] = "hidden";
+            ManageMeters.Attributes.CssStyle[HtmlTextWriterStyle.Visibility] = "hidden";
+            CreateSale.Attributes.CssStyle[HtmlTextWriterStyle.Visibility] = "hidden";
+            ViewReports.Attributes.CssStyle[HtmlTextWriterStyle.Visibility] = "hidden";
         }
 
         protected void logout(object sender, EventArgs e)

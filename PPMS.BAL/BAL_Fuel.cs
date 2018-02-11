@@ -22,5 +22,29 @@ namespace PPMS.BAL
             DAL_Fuel dAL_Fuel = new DAL_Fuel();
             return dAL_Fuel.GetDailyFuelCost();
         }
+
+        public long UpdateFuel(FuelData fuelData, UserOpMap userOpMap)
+        {
+            DAL_Fuel dAL_Fuel = new DAL_Fuel();
+            Fuel fuel = new Fuel();
+            DailyFuelCost dailyFuelCost = new DailyFuelCost();
+            fuel.Id = fuelData.Id;
+            fuel.Name = fuelData.Name;
+            fuel.Description = fuelData.Description;
+            dailyFuelCost.FuelTypeId = fuel.Id;
+            dailyFuelCost.CostPerLiter = fuelData.CostPerLiter;
+            return dAL_Fuel.UpdateFuel(fuel, dailyFuelCost, userOpMap);
+        }
+
+        public long CreateFuel(FuelData fuelData, UserOpMap userOpMap)
+        {
+            DAL_Fuel dAL_Fuel = new DAL_Fuel();
+            Fuel fuel = new Fuel();
+            DailyFuelCost dailyFuelCost = new DailyFuelCost();
+            fuel.Name = fuelData.Name;
+            fuel.Description = fuelData.Description;
+            dailyFuelCost.CostPerLiter = fuelData.CostPerLiter;
+            return dAL_Fuel.CreateFuel(fuel, dailyFuelCost, userOpMap);
+        }
     }
 }

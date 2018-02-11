@@ -1,22 +1,20 @@
 ﻿
 
 set identity_insert [dbo].[OperationMaster] on
-Insert into OperationMaster ([ID],[OperationName],[Description]) values(1,'Dashboard','Operation to view dashboard')
-Insert into OperationMaster ([ID],[OperationName],[Description]) values(2,'ManageCustomer','OpOperation to allow manage customer')
-Insert into OperationMaster ([ID],[OperationName],[Description]) values(3,'ManageFuel','Operation to allow manage fuel')
-Insert into OperationMaster ([ID],[OperationName],[Description]) values(4,'ManageMeters','Operation to allow manage meters')
-Insert into OperationMaster ([ID],[OperationName],[Description]) values(5,'ManageTanks','Operation to allow manage Tanks')
-Insert into OperationMaster ([ID],[OperationName],[Description]) values(6,'ViewReports','Operation to allow view reports')
-Insert into OperationMaster ([ID],[OperationName],[Description]) values(7,'CreateSale','Operation to allow create Sales')
+If not exists(Select 'X' from OperationMaster where ID=1)Insert into OperationMaster ([ID],[OperationName],[Description]) values(1,'Dashboard','Operation to view dashboard')
+If not exists(Select 'X' from OperationMaster where ID=2)Insert into OperationMaster ([ID],[OperationName],[Description]) values(2,'ManageCustomer','OpOperation to allow manage customer')
+If not exists(Select 'X' from OperationMaster where ID=3)Insert into OperationMaster ([ID],[OperationName],[Description]) values(3,'ManageFuel','Operation to allow manage fuel')
+If not exists(Select 'X' from OperationMaster where ID=4)Insert into OperationMaster ([ID],[OperationName],[Description]) values(4,'ManageMeters','Operation to allow manage meters')
+If not exists(Select 'X' from OperationMaster where ID=5)Insert into OperationMaster ([ID],[OperationName],[Description]) values(5,'ManageTanks','Operation to allow manage Tanks')
+If not exists(Select 'X' from OperationMaster where ID=6)Insert into OperationMaster ([ID],[OperationName],[Description]) values(6,'ViewReports','Operation to allow view reports')
+If not exists(Select 'X' from OperationMaster where ID=7)Insert into OperationMaster ([ID],[OperationName],[Description]) values(7,'CreateSale','Operation to allow create Sales')
 set identity_insert [dbo].[OperationMaster] off
 
 
 set identity_insert [dbo].[RoleMaster] on
-Insert into RoleMaster ([ID],[RoleName],[Description])
-values(1,'SysAdmin','Access to all roads')
-,(2,'Admin','Admin having access to operations defined by SysAdmin')
-,(3,'EndUser','Can generate and view bills')
-
+If not exists(Select 'X' from RoleMaster where ID=1)Insert into RoleMaster ([ID],[RoleName],[Description])values(1,'SysAdmin','Access to all roads')
+If not exists(Select 'X' from RoleMaster where ID=2)Insert into RoleMaster ([ID],[RoleName],[Description])values(2,'Admin','Admin having access to operations defined by SysAdmin')
+If not exists(Select 'X' from RoleMaster where ID=3)Insert into RoleMaster ([ID],[RoleName],[Description])values(3,'EndUser','Can generate and view bills')
 set identity_insert [dbo].[RoleMaster] off
 
 
@@ -24,7 +22,7 @@ insert into RoleOperationMapping
 values 
 (1,1),(1,2),(1,3),(1,4),(1,5),(1,6),(1,7),
 (2,1),(2,2),(2,3),(2,4),(2,5),(2,6),(2,7),
-(3,6),(3,7)
+(3,1),(3,6),(3,7)
 
 
 set identity_insert [dbo].[UserMaster] on
@@ -37,3 +35,12 @@ set identity_insert [dbo].[UserMaster] off
 
 Insert into UserRoleMapping
 values(1,1),(2,2),(3,3)
+
+
+--insert into Fuel
+--values
+--('XPPetrol','Xtra Premium Petrol',1,1,1,GETDATE(),GETDATE(),'Petrol')
+
+
+--insert into DailyFuelCost
+--values(1,'76.62',GETDATE(),1,1,1,GETDATE(),GETDATE())

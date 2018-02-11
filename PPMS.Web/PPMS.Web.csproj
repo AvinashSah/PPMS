@@ -117,6 +117,7 @@
     <Content Include="Content\js\Dashboard.js" />
     <Content Include="Content\js\dataTables.bootstrap.min.js" />
     <Content Include="Content\js\jquery.dataTables.min.js" />
+    <Content Include="FuelService.asmx" />
     <Content Include="InventoryReport.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="ManageCustomer.aspx" />
@@ -167,6 +168,10 @@
     </Compile>
     <Compile Include="Dashboard.aspx.designer.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FuelService.asmx.cs">
+      <DependentUpon>FuelService.asmx</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

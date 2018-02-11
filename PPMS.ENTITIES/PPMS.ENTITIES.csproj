@@ -71,9 +71,11 @@
     <Compile Include="DenominationType.cs">
       <DependentUpon>PPMSModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="EntitySubmittedResponse.cs" />
     <Compile Include="Fuel.cs">
       <DependentUpon>PPMSModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="FuelData.cs" />
     <Compile Include="FuelTypeConstants.cs" />
     <Compile Include="Meter.cs">
       <DependentUpon>PPMSModel.tt</DependentUpon>

@@ -121,7 +121,7 @@
                     } else {
                         jQuery('.back-to-top').fadeOut(duration);
                     }
-                    $('.dynamicMenu').hide();
+                    $(".dynamicMenu").hide();
                 });
 
                 jQuery('.back-to-top').click(function (event) {
