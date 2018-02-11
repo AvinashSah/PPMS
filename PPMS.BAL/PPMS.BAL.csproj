@@ -41,8 +41,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BAL_Common.cs" />
+    <Compile Include="BAL_Customer.cs" />
     <Compile Include="BAL_Fuel.cs" />
+    <Compile Include="BAL_Meter.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="BAL_Tanker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

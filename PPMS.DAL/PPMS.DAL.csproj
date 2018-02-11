@@ -51,7 +51,10 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="DAL_Common.cs" />
+    <Compile Include="DAL_Customer.cs" />
     <Compile Include="DAL_Fuel.cs" />
+    <Compile Include="DAL_Meter.cs" />
+    <Compile Include="DAL_Tanker.cs" />
     <Compile Include="PPMSModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
