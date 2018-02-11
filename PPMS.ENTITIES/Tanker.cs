@@ -29,6 +29,6 @@ namespace PPMS.ENTITIES
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DailyTankerReading> DailyTankerReadings { get; set; }
-        public virtual FuelType FuelType { get; set; }
+        public virtual Fuel Fuel { get; set; }
     }
 }

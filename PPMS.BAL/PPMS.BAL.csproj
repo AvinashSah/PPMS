@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BAL_Common.cs" />
+    <Compile Include="BAL_Fuel.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -50,7 +51,7 @@
       <Name>PPMS.DAL</Name>
     </ProjectReference>
     <ProjectReference Include="..\PPMS.ENTITIES\PPMS.ENTITIES.csproj">
-      <Project>{40f4193e-a69f-4ea8-891d-9c405ed573b3}</Project>
+      <Project>{40F4193E-A69F-4EA8-891D-9C405ED573B3}</Project>
       <Name>PPMS.ENTITIES</Name>
     </ProjectReference>
   </ItemGroup>

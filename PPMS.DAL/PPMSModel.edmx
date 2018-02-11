@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ppmsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ppmsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Customer">
           <Key>
             <PropertyRef Name="Id" />
@@ -92,7 +92,7 @@
           <Property Name="Description" Type="nvarchar(max)" />
           <Property Name="CreatedOn" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
         </EntityType>
-        <EntityType Name="FuelType">
+        <EntityType Name="Fuel">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -100,6 +100,7 @@
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Description" Type="nvarchar(max)" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Meter">
           <Key>
@@ -209,10 +210,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_DailyFuelCost_FuelType">
-          <End Role="FuelType" Type="Self.FuelType" Multiplicity="1" />
+          <End Role="Fuel" Type="Self.Fuel" Multiplicity="1" />
           <End Role="DailyFuelCost" Type="Self.DailyFuelCost" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="FuelType">
+            <Principal Role="Fuel">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="DailyFuelCost">
@@ -245,10 +246,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Meter_FuelType">
-          <End Role="FuelType" Type="Self.FuelType" Multiplicity="1" />
+          <End Role="Fuel" Type="Self.Fuel" Multiplicity="1" />
           <End Role="Meter" Type="Self.Meter" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="FuelType">
+            <Principal Role="Fuel">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Meter">
@@ -293,10 +294,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Sale_FuelType">
-          <End Role="FuelType" Type="Self.FuelType" Multiplicity="1" />
+          <End Role="Fuel" Type="Self.Fuel" Multiplicity="1" />
           <End Role="Sale" Type="Self.Sale" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="FuelType">
+            <Principal Role="Fuel">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Sale">
@@ -305,10 +306,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Tanker_FuelType">
-          <End Role="FuelType" Type="Self.FuelType" Multiplicity="1" />
+          <End Role="Fuel" Type="Self.Fuel" Multiplicity="1" />
           <End Role="Tanker" Type="Self.Tanker" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="FuelType">
+            <Principal Role="Fuel">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Tanker">
@@ -348,7 +349,7 @@
           <EntitySet Name="DailyMeterReading" EntityType="Self.DailyMeterReading" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DailyTankerReading" EntityType="Self.DailyTankerReading" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DenominationType" EntityType="Self.DenominationType" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="FuelType" EntityType="Self.FuelType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Fuel" EntityType="Self.Fuel" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Meter" EntityType="Self.Meter" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OperationMaster" EntityType="Self.OperationMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RoleMaster" EntityType="Self.RoleMaster" Schema="dbo" store:Type="Tables" />
@@ -366,7 +367,7 @@
             <End Role="DailyCashSaleDenomination" EntitySet="DailyCashSaleDenomination" />
           </AssociationSet>
           <AssociationSet Name="FK_DailyFuelCost_FuelType" Association="Self.FK_DailyFuelCost_FuelType">
-            <End Role="FuelType" EntitySet="FuelType" />
+            <End Role="Fuel" EntitySet="Fuel" />
             <End Role="DailyFuelCost" EntitySet="DailyFuelCost" />
           </AssociationSet>
           <AssociationSet Name="FK_DailyMeterReading_Meter" Association="Self.FK_DailyMeterReading_Meter">
@@ -378,7 +379,7 @@
             <End Role="DailyTankerReading" EntitySet="DailyTankerReading" />
           </AssociationSet>
           <AssociationSet Name="FK_Meter_FuelType" Association="Self.FK_Meter_FuelType">
-            <End Role="FuelType" EntitySet="FuelType" />
+            <End Role="Fuel" EntitySet="Fuel" />
             <End Role="Meter" EntitySet="Meter" />
           </AssociationSet>
           <AssociationSet Name="FK_RoleOperationMapping_OperationMaster" Association="Self.FK_RoleOperationMapping_OperationMaster">
@@ -394,11 +395,11 @@
             <End Role="Sale" EntitySet="Sale" />
           </AssociationSet>
           <AssociationSet Name="FK_Sale_FuelType" Association="Self.FK_Sale_FuelType">
-            <End Role="FuelType" EntitySet="FuelType" />
+            <End Role="Fuel" EntitySet="Fuel" />
             <End Role="Sale" EntitySet="Sale" />
           </AssociationSet>
           <AssociationSet Name="FK_Tanker_FuelType" Association="Self.FK_Tanker_FuelType">
-            <End Role="FuelType" EntitySet="FuelType" />
+            <End Role="Fuel" EntitySet="Fuel" />
             <End Role="Tanker" EntitySet="Tanker" />
           </AssociationSet>
           <AssociationSet Name="FK_UserRoleMapping_RoleMaster" Association="Self.FK_UserRoleMapping_RoleMaster">
@@ -410,8 +411,7 @@
             <End Role="UserRoleMapping" EntitySet="UserRoleMapping" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ppmsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -468,7 +468,7 @@
           <Property Name="CreatedOn" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
           <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="FuelType" Relationship="Self.FK_DailyFuelCost_FuelType" FromRole="DailyFuelCost" ToRole="FuelType" />
+          <NavigationProperty Name="Fuel" Relationship="ppmsModel.FK_DailyFuelCost_FuelType1" FromRole="DailyFuelCost" ToRole="Fuel" />
         </EntityType>
         <EntityType Name="DailyMeterReading">
           <Key>
@@ -510,19 +510,6 @@
           <Property Name="CreatedOn" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
           <NavigationProperty Name="DailyCashSaleDenominations" Relationship="Self.FK_DailyCashSaleDenomination_DenominationType" FromRole="DenominationType" ToRole="DailyCashSaleDenomination" />
         </EntityType>
-        <EntityType Name="FuelType">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="IsActive" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="DailyFuelCosts" Relationship="Self.FK_DailyFuelCost_FuelType" FromRole="FuelType" ToRole="DailyFuelCost" />
-          <NavigationProperty Name="Meters" Relationship="Self.FK_Meter_FuelType" FromRole="FuelType" ToRole="Meter" />
-          <NavigationProperty Name="Sales" Relationship="Self.FK_Sale_FuelType" FromRole="FuelType" ToRole="Sale" />
-          <NavigationProperty Name="Tankers" Relationship="Self.FK_Tanker_FuelType" FromRole="FuelType" ToRole="Tanker" />
-        </EntityType>
         <EntityType Name="Meter">
           <Key>
             <PropertyRef Name="Id" />
@@ -534,7 +521,7 @@
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="DailyMeterReadings" Relationship="Self.FK_DailyMeterReading_Meter" FromRole="Meter" ToRole="DailyMeterReading" />
-          <NavigationProperty Name="FuelType" Relationship="Self.FK_Meter_FuelType" FromRole="Meter" ToRole="FuelType" />
+          <NavigationProperty Name="Fuel" Relationship="ppmsModel.FK_Meter_FuelType1" FromRole="Meter" ToRole="Fuel" />
         </EntityType>
         <EntityType Name="OperationMaster">
           <Key>
@@ -580,7 +567,7 @@
           <Property Name="UniqueTokenNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Customer" Relationship="Self.FK_Sale_Customer" FromRole="Sale" ToRole="Customer" />
-          <NavigationProperty Name="FuelType" Relationship="Self.FK_Sale_FuelType" FromRole="Sale" ToRole="FuelType" />
+          <NavigationProperty Name="Fuel" Relationship="ppmsModel.FK_Sale_FuelType1" FromRole="Sale" ToRole="Fuel" />
         </EntityType>
         <EntityType Name="Tanker">
           <Key>
@@ -593,7 +580,7 @@
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="IsActive" Type="Boolean" />
           <NavigationProperty Name="DailyTankerReadings" Relationship="Self.FK_DailyTankerReading_Tanker" FromRole="Tanker" ToRole="DailyTankerReading" />
-          <NavigationProperty Name="FuelType" Relationship="Self.FK_Tanker_FuelType" FromRole="Tanker" ToRole="FuelType" />
+          <NavigationProperty Name="Fuel" Relationship="ppmsModel.FK_Tanker_FuelType1" FromRole="Tanker" ToRole="Fuel" />
         </EntityType>
         <EntityType Name="UserMaster">
           <Key>
@@ -656,18 +643,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_DailyFuelCost_FuelType">
-          <End Role="FuelType" Type="Self.FuelType" Multiplicity="1" />
-          <End Role="DailyFuelCost" Type="Self.DailyFuelCost" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="FuelType">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="DailyFuelCost">
-              <PropertyRef Name="FuelTypeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_DailyMeterReading_Meter">
           <End Role="Meter" Type="Self.Meter" Multiplicity="1" />
           <End Role="DailyMeterReading" Type="Self.DailyMeterReading" Multiplicity="*" />
@@ -689,42 +664,6 @@
             </Principal>
             <Dependent Role="DailyTankerReading">
               <PropertyRef Name="TankerId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Meter_FuelType">
-          <End Role="FuelType" Type="Self.FuelType" Multiplicity="1" />
-          <End Role="Meter" Type="Self.Meter" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="FuelType">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Meter">
-              <PropertyRef Name="FuelTypeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Sale_FuelType">
-          <End Role="FuelType" Type="Self.FuelType" Multiplicity="1" />
-          <End Role="Sale" Type="Self.Sale" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="FuelType">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Sale">
-              <PropertyRef Name="FuelTypeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Tanker_FuelType">
-          <End Role="FuelType" Type="Self.FuelType" Multiplicity="1" />
-          <End Role="Tanker" Type="Self.Tanker" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="FuelType">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Tanker">
-              <PropertyRef Name="FuelTypeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -784,7 +723,6 @@
           <EntitySet Name="DailyMeterReadings" EntityType="Self.DailyMeterReading" />
           <EntitySet Name="DailyTankerReadings" EntityType="Self.DailyTankerReading" />
           <EntitySet Name="DenominationTypes" EntityType="Self.DenominationType" />
-          <EntitySet Name="FuelTypes" EntityType="Self.FuelType" />
           <EntitySet Name="Meters" EntityType="Self.Meter" />
           <EntitySet Name="OperationMasters" EntityType="Self.OperationMaster" />
           <EntitySet Name="RoleMasters" EntityType="Self.RoleMaster" />
@@ -805,10 +743,6 @@
             <End Role="DenominationType" EntitySet="DenominationTypes" />
             <End Role="DailyCashSaleDenomination" EntitySet="DailyCashSaleDenominations" />
           </AssociationSet>
-          <AssociationSet Name="FK_DailyFuelCost_FuelType" Association="Self.FK_DailyFuelCost_FuelType">
-            <End Role="FuelType" EntitySet="FuelTypes" />
-            <End Role="DailyFuelCost" EntitySet="DailyFuelCosts" />
-          </AssociationSet>
           <AssociationSet Name="FK_DailyMeterReading_Meter" Association="Self.FK_DailyMeterReading_Meter">
             <End Role="Meter" EntitySet="Meters" />
             <End Role="DailyMeterReading" EntitySet="DailyMeterReadings" />
@@ -816,18 +750,6 @@
           <AssociationSet Name="FK_DailyTankerReading_Tanker" Association="Self.FK_DailyTankerReading_Tanker">
             <End Role="Tanker" EntitySet="Tankers" />
             <End Role="DailyTankerReading" EntitySet="DailyTankerReadings" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Meter_FuelType" Association="Self.FK_Meter_FuelType">
-            <End Role="FuelType" EntitySet="FuelTypes" />
-            <End Role="Meter" EntitySet="Meters" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Sale_FuelType" Association="Self.FK_Sale_FuelType">
-            <End Role="FuelType" EntitySet="FuelTypes" />
-            <End Role="Sale" EntitySet="Sales" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Tanker_FuelType" Association="Self.FK_Tanker_FuelType">
-            <End Role="FuelType" EntitySet="FuelTypes" />
-            <End Role="Tanker" EntitySet="Tankers" />
           </AssociationSet>
           <AssociationSet Name="FK_RoleOperationMapping_OperationMaster" Association="Self.FK_RoleOperationMapping_OperationMaster">
             <End Role="OperationMaster" EntitySet="OperationMasters" />
@@ -845,7 +767,86 @@
             <End Role="UserMaster" EntitySet="UserMasters" />
             <End Role="UserRoleMapping" EntitySet="UserRoleMappings" />
           </AssociationSet>
+          <EntitySet Name="Fuels" EntityType="ppmsModel.Fuel" />
+          <AssociationSet Name="FK_DailyFuelCost_FuelType1" Association="ppmsModel.FK_DailyFuelCost_FuelType1">
+            <End Role="Fuel" EntitySet="Fuels" />
+            <End Role="DailyFuelCost" EntitySet="DailyFuelCosts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Meter_FuelType1" Association="ppmsModel.FK_Meter_FuelType1">
+            <End Role="Fuel" EntitySet="Fuels" />
+            <End Role="Meter" EntitySet="Meters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sale_FuelType1" Association="ppmsModel.FK_Sale_FuelType1">
+            <End Role="Fuel" EntitySet="Fuels" />
+            <End Role="Sale" EntitySet="Sales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tanker_FuelType1" Association="ppmsModel.FK_Tanker_FuelType1">
+            <End Role="Fuel" EntitySet="Fuels" />
+            <End Role="Tanker" EntitySet="Tankers" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Fuel">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DailyFuelCosts" Relationship="ppmsModel.FK_DailyFuelCost_FuelType1" FromRole="Fuel" ToRole="DailyFuelCost" />
+          <NavigationProperty Name="Meters" Relationship="ppmsModel.FK_Meter_FuelType1" FromRole="Fuel" ToRole="Meter" />
+          <NavigationProperty Name="Sales" Relationship="ppmsModel.FK_Sale_FuelType1" FromRole="Fuel" ToRole="Sale" />
+          <NavigationProperty Name="Tankers" Relationship="ppmsModel.FK_Tanker_FuelType1" FromRole="Fuel" ToRole="Tanker" />
+        </EntityType>
+        <Association Name="FK_DailyFuelCost_FuelType1">
+          <End Type="ppmsModel.Fuel" Role="Fuel" Multiplicity="1" />
+          <End Type="ppmsModel.DailyFuelCost" Role="DailyFuelCost" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fuel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DailyFuelCost">
+              <PropertyRef Name="FuelTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Meter_FuelType1">
+          <End Type="ppmsModel.Fuel" Role="Fuel" Multiplicity="1" />
+          <End Type="ppmsModel.Meter" Role="Meter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fuel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Meter">
+              <PropertyRef Name="FuelTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sale_FuelType1">
+          <End Type="ppmsModel.Fuel" Role="Fuel" Multiplicity="1" />
+          <End Type="ppmsModel.Sale" Role="Sale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fuel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sale">
+              <PropertyRef Name="FuelTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tanker_FuelType1">
+          <End Type="ppmsModel.Fuel" Role="Fuel" Multiplicity="1" />
+          <End Type="ppmsModel.Tanker" Role="Tanker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fuel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Tanker">
+              <PropertyRef Name="FuelTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -946,16 +947,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="FuelTypes">
-            <EntityTypeMapping TypeName="ppmsModel.FuelType">
-              <MappingFragment StoreEntitySet="FuelType">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Meters">
             <EntityTypeMapping TypeName="ppmsModel.Meter">
               <MappingFragment StoreEntitySet="Meter">
@@ -1044,6 +1035,17 @@
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Fuels">
+            <EntityTypeMapping TypeName="ppmsModel.Fuel">
+              <MappingFragment StoreEntitySet="Fuel">
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

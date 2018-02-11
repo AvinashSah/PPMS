@@ -22,6 +22,6 @@ namespace PPMS.ENTITIES
         public string CreatedBy { get; set; }
         public bool IsActive { get; set; }
     
-        public virtual FuelType FuelType { get; set; }
+        public virtual Fuel Fuel { get; set; }
     }
 }
