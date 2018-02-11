@@ -45,13 +45,13 @@ namespace PPMS.Web
 
         private void HideControls()
         {
-            Dashboard.Attributes.CssStyle[HtmlTextWriterStyle.Visibility] = "hidden";
-            ManageCustomer.Attributes.CssStyle[HtmlTextWriterStyle.Visibility] = "hidden";
-            ManageTanks.Attributes.CssStyle[HtmlTextWriterStyle.Visibility] = "hidden";
-            ManageFuel.Attributes.CssStyle[HtmlTextWriterStyle.Visibility] = "hidden";
-            ManageMeters.Attributes.CssStyle[HtmlTextWriterStyle.Visibility] = "hidden";
-            CreateSale.Attributes.CssStyle[HtmlTextWriterStyle.Visibility] = "hidden";
-            ViewReports.Attributes.CssStyle[HtmlTextWriterStyle.Visibility] = "hidden";
+            Dashboard.Attributes.CssStyle[HtmlTextWriterStyle.Display] = "none";
+            ManageCustomer.Attributes.CssStyle[HtmlTextWriterStyle.Display] = "none";
+            ManageTanks.Attributes.CssStyle[HtmlTextWriterStyle.Display] = "none";
+            ManageFuel.Attributes.CssStyle[HtmlTextWriterStyle.Display] = "none";
+            ManageMeters.Attributes.CssStyle[HtmlTextWriterStyle.Display] = "none";
+            CreateSale.Attributes.CssStyle[HtmlTextWriterStyle.Display] = "none";
+            ViewReports.Attributes.CssStyle[HtmlTextWriterStyle.Display] = "none";
         }
 
         protected void logout(object sender, EventArgs e)
