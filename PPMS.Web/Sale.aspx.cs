@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace PPMS.Web
 {
-    public partial class Sale : System.Web.UI.Page
+    public partial class Sale : Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

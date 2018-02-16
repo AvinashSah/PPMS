@@ -43,5 +43,8 @@ namespace PPMS.DAL
         public virtual DbSet<Tanker> Tankers { get; set; }
         public virtual DbSet<UserMaster> UserMasters { get; set; }
         public virtual DbSet<UserRoleMapping> UserRoleMappings { get; set; }
+        public virtual DbSet<City> Cities { get; set; }
+        public virtual DbSet<Country> Countries { get; set; }
+        public virtual DbSet<State> States { get; set; }
     }
 }

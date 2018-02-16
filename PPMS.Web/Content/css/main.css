@@ -947,7 +947,7 @@ a.accordion-toggle i
   content:  "";
   width: auto;
   height: auto;
-  border-style:solid;
+  /*border-style:solid;*/
   border-color: transparent transparent transparent #1f1f20;
   border-width: 25px 22px;
   right: -44px;

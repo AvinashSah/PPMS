@@ -76,12 +76,15 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CommonService.asmx" />
     <Content Include="Content\css\font-awesome-login.css" />
     <Content Include="Content\css\login.css" />
+    <Content Include="Content\css\Wizard.css" />
     <Content Include="Content\CustomJs\Customer.js" />
     <Content Include="Content\CustomJs\Fuel.js" />
     <Content Include="Content\CustomJs\Meter.js" />
     <Content Include="Content\CustomJs\Tanker.js" />
+    <Content Include="Content\CustomJs\Wizard.js" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
@@ -120,6 +123,7 @@
     <Content Include="Content\js\jquery.dataTables.min.js" />
     <Content Include="Content\js\jquery.min.js" />
     <Content Include="Content\js\notify.js" />
+    <Content Include="CustomerService.asmx" />
     <Content Include="FuelService.asmx" />
     <Content Include="InventoryReport.aspx" />
     <Content Include="Login.aspx" />
@@ -132,6 +136,7 @@
     <Content Include="SiteGeneral.Master" />
     <Content Include="SiteAdmin.Master" />
     <Content Include="Site.Mobile.Master" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -165,6 +170,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="CommonService.asmx.cs">
+      <DependentUpon>CommonService.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CustomerService.asmx.cs">
+      <DependentUpon>CustomerService.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Dashboard.aspx.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
