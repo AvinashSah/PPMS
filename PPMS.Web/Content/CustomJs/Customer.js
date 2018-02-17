@@ -34,7 +34,7 @@
         var htmlContent = "";
 
         for (var i = 0; i < customerList.length; i++) {
-            htmlContent += "<tr class=\"fuelID\" id=\"" + (i + 1) + "\">";
+            htmlContent += "<tr class=\"fuelID\" id=\"" + (customerList[i].Id) + "\">";
             htmlContent += "<td scope=\"row\">" + customerList[i].Name + "</td>";
             htmlContent += "<td scope=\"row\">" + customerList[i].Type + "</td>";
             htmlContent += "<td scope=\"row\">" + customerList[i].ContactNumber + "</td>";
@@ -42,7 +42,7 @@
             htmlContent += "<td scope=\"row\">" + (customerList[i].Addr1 + "," + customerList[i].Addr2) + "</td>";
             htmlContent += "<td scope=\"row\">" + customerList[i].City + "</td>";
             htmlContent += "<td scope=\"row\">" + customerList[i].State + "</td>";
-            htmlContent += "<td>" + "<button id=\"" + (i + 1) + "\" class=\"editCustomer btn btn-danger nopadding\" style=\"padding:2px\"><i class=\"glyphicon glyphicon-pencil\"></i></button>" + "</td>";
+            htmlContent += "<td>" + "<button id=\"" + (customerList[i].Id) + "\" class=\"editCustomer btn btn-danger nopadding\" style=\"padding:2px\"><i class=\"glyphicon glyphicon-pencil\"></i></button>" + "</td>";
             htmlContent += "</tr>";
         }
         $("#customerList tbody").append(htmlContent);
@@ -80,6 +80,7 @@
 
     function BindEditedCustomerDataToEditModel(customerDataClicked) {
         for (var i = 0; i < customerDataClicked.length; i++) {
+            $("#customerID").val(customerDataClicked[i].Id);
             $("#customerName").val(customerDataClicked[i].Name);
             $("#customerMailID").val(customerDataClicked[i].EmailID);
             $("#customerContactNumber").val(customerDataClicked[i].ContactNumber);
@@ -160,7 +161,7 @@
             }
         });
     }
-    
+
     function BindStateListToEditModelDropDown(stateList, stateName, cityName) {
         $("#customerState").empty();
         var selectStatement = "<option Value=\"0\" selected>--Select State--</option>";
@@ -203,7 +204,7 @@
         });
     }
 
-    function BindCityListForCustomerStateEditModelDropDown(cityList,cityName) {
+    function BindCityListForCustomerStateEditModelDropDown(cityList, cityName) {
         $("#customerCity").html('');
 
         var selectStatement = "<option Value=\"0\" selected>--Select City--</option>";
@@ -218,12 +219,17 @@
     }
 
     $("#editCustomerModalButton").click(function () {
-        var fuelType = $("#fuelType").val();
-        var desc = $("#description").val();
-        var costperliter = $("#CostLtr").val();
-        var fuelID = $("#fuelID").val();
-        $("#messageEdit").val("");
-        var submitFuelData = { Id: fuelID, Name: fuelName, Description: desc, Type: fuelType, CostPerLiter: costperliter }
-        SubmitEditFuelData(submitFuelData);
+        var customerName = $("#customerName").val();
+        var customerId = $("#customerID").val();
+        var customerType = $('#customerType :selected').text();
+        var customerMailID = $("#customerMailID").val();
+        var customerContactNumber = $("#customerContactNumber").val();
+        var customerAddr1 = $("#customerAddr1").val();
+        var customerAddr2 = $("#customerAddr2").val();
+        var customerStateName = $('#customerState :selected').text();
+        var customerCityName = $('#customerCity :selected').text();
+
+        var submitCustomerUpdateData = { Id: customerId, Name: customerName, ContactNumber: customerContactNumber, EmailID: customerMailID, Addr1: customerAddr1, Addr2: customerAddr2, City: customerCityName, State: customerStateName, Type: customerType }
+        SubmitUpdateCustomerData(submitCustomerUpdateData);
     });
 });

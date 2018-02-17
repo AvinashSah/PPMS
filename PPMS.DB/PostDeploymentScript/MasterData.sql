@@ -5865,3 +5865,10 @@ INSERT INTO Cities (ID, Name, StateID) VALUES
 
 set identity_insert [dbo].[Cities] off
 
+
+--INSERT INTO [dbo].[Customer]
+--           ([Name],[ContactNumber],[EmailId],[AddressLineOne],[AddressLineTwo],[City],[District],[State],[PinCode],[CustomerTypeId],[IsActive],[CreatedBy],[Updatedby],[CreatedOn])
+--		   values('TestCust1',989898989,'testCust1@testMail.com','Addr1','Addr2','New Delhi',NULL,'Delhi',110024,1,1,1,1,GETDATE())
+
+--Insert into [dbo].[CustomerType]
+--values('TestType1',1,1,1,GETDATE(),GETDATE())

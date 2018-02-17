@@ -33,12 +33,12 @@
         var htmlContent = "";
 
         for (var i = 0; i < fuelList.length; i++) {
-            htmlContent += "<tr class=\"fuelID\" id=\"" + (i + 1) + "\">";
+            htmlContent += "<tr class=\"fuelID\" id=\"" + (fuelList[i].Id) + "\">";
             htmlContent += "<td scope=\"row\">" + fuelList[i].Name + "</td>";
             htmlContent += "<td scope=\"row\">" + fuelList[i].Type + "</td>";
             htmlContent += "<td scope=\"row\">" + fuelList[i].Description + "</td>";
             htmlContent += "<td scope=\"row\">" + fuelList[i].CostPerLiter + "</td>";
-            htmlContent += "<td>" + "<button id=\"" + (i + 1) + "\" class=\"editFuel btn btn-danger nopadding\" style=\"padding:2px\"><i class=\"glyphicon glyphicon-pencil\"></i></button>" + "</td>";
+            htmlContent += "<td>" + "<button id=\"" + (fuelList[i].Id) + "\" class=\"editFuel btn btn-danger nopadding\" style=\"padding:2px\"><i class=\"glyphicon glyphicon-pencil\"></i></button>" + "</td>";
             htmlContent += "</tr>";
         }
         $("#fuelList tbody").append(htmlContent);
