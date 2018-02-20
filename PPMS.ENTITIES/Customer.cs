@@ -22,7 +22,7 @@ namespace PPMS.ENTITIES
     
         public int Id { get; set; }
         public string Name { get; set; }
-        public Nullable<int> ContactNumber { get; set; }
+        public Nullable<long> ContactNumber { get; set; }
         public string EmailId { get; set; }
         public string AddressLineOne { get; set; }
         public string AddressLineTwo { get; set; }

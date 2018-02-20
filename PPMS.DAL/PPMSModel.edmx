@@ -34,7 +34,7 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="ContactNumber" Type="int" />
+          <Property Name="ContactNumber" Type="bigint" />
           <Property Name="EmailId" Type="nvarchar" MaxLength="50" />
           <Property Name="AddressLineOne" Type="nvarchar(max)" />
           <Property Name="AddressLineTwo" Type="nvarchar(max)" />
@@ -530,7 +530,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ContactNumber" Type="Int32" />
+          <Property Name="ContactNumber" Type="Int64" />
           <Property Name="EmailId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="AddressLineOne" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="AddressLineTwo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Script.Services;
+using System.Web.Security;
 using System.Web.Services;
 
 namespace PPMS.Web
@@ -78,7 +79,7 @@ namespace PPMS.Web
 
         [WebMethod]
         [ScriptMethod()]
-        public CustomerData GetFuelDataByID(string customerID)
+        public CustomerData GetCustomerDataByID(string customerID)
         {
             CustomerData retCustomerData = new CustomerData();
             List<Customer> customerList = new List<Customer>();
@@ -120,6 +121,74 @@ namespace PPMS.Web
                 }
             }
             return retCustomerData;
+        }
+
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string SubmitEditCustomerData(CustomerData CustomerData)
+        {
+            var User = System.Web.HttpContext.Current.User.Identity.Name;
+            FormsIdentity id = (FormsIdentity)HttpContext.Current.User.Identity;
+            FormsAuthenticationTicket ticket = id.Ticket;
+            string userData = ticket.UserData;
+            string[] roles = userData.Split(',');
+            string userRole = roles[0];
+            UserOpMap userOpMap = new UserOpMap();
+            BAL.BAL_Common bAL_Common = new BAL.BAL_Common();
+            userOpMap = bAL_Common.GetUserOperationMapping(HttpContext.Current.User.Identity.Name, userRole);
+
+            EntitySubmittedResponse entitySubmittedResponse = new EntitySubmittedResponse();
+            System.Web.Script.Serialization.JavaScriptSerializer js = new System.Web.Script.Serialization.JavaScriptSerializer();
+            try
+            {
+                BAL.BAL_Customer bAL_Customer = new BAL.BAL_Customer();
+                long customerID = bAL_Customer.UpdateCutsomer(CustomerData, userOpMap);
+                entitySubmittedResponse.submited = true;
+                entitySubmittedResponse.message = "Customer updated!";
+                return js.Serialize("Customer updated!");
+
+            }
+            catch (Exception ex)
+            {
+                entitySubmittedResponse.submited = false;
+                entitySubmittedResponse.message = string.Format("Error occured while updating Customer with message:{0}", ex.Message);
+                //return js.Serialize(entitySubmittedResponse);
+                return js.Serialize(string.Format("Error occured while updating Customer with message:{0}", ex.Message));
+            }
+        }
+
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string SubmitCreateCustomerData(CustomerData CustomerData)
+        {
+            var User = System.Web.HttpContext.Current.User.Identity.Name;
+            FormsIdentity id = (FormsIdentity)HttpContext.Current.User.Identity;
+            FormsAuthenticationTicket ticket = id.Ticket;
+            string userData = ticket.UserData;
+            string[] roles = userData.Split(',');
+            string userRole = roles[0];
+            UserOpMap userOpMap = new UserOpMap();
+            BAL.BAL_Common bAL_Common = new BAL.BAL_Common();
+            userOpMap = bAL_Common.GetUserOperationMapping(HttpContext.Current.User.Identity.Name, userRole);
+
+            EntitySubmittedResponse entitySubmittedResponse = new EntitySubmittedResponse();
+            System.Web.Script.Serialization.JavaScriptSerializer js = new System.Web.Script.Serialization.JavaScriptSerializer();
+            try
+            {
+                BAL.BAL_Customer bAL_Customer = new BAL.BAL_Customer();
+                long customerID = bAL_Customer.CreateCustomer(CustomerData, userOpMap);
+                entitySubmittedResponse.submited = true;
+                entitySubmittedResponse.message = "Customer Created!";
+                return js.Serialize("Customer Created!");
+
+            }
+            catch (Exception ex)
+            {
+                entitySubmittedResponse.submited = false;
+                entitySubmittedResponse.message = string.Format("Error occured while creating Customer with message:{0}", ex.Message);
+                //return js.Serialize(entitySubmittedResponse);
+                return js.Serialize(string.Format("Error occured while creating Customer with message:{0}", ex.Message));
+            }
         }
     }
 }

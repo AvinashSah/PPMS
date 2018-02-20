@@ -1,5 +1,5 @@
 ﻿$(document).ready(function () {
-    //$('#customerList').DataTable();
+
     BindCustomerList();
 
     function BindCustomerList() {
@@ -59,7 +59,7 @@
         var customerDataClicked = [];
         $.ajax({
             type: "POST",
-            url: "CustomerService.asmx/GetFuelDataByID",
+            url: "CustomerService.asmx/GetCustomerDataByID",
             data: JSON.stringify({ customerID: customerIDClicked }),
             contentType: "application/json; charset=utf-8",
             dataType: "json",
@@ -221,7 +221,7 @@
     $("#editCustomerModalButton").click(function () {
         var customerName = $("#customerName").val();
         var customerId = $("#customerID").val();
-        var customerType = $('#customerType :selected').text();
+        var customerType = $('#customerType :selected').val();
         var customerMailID = $("#customerMailID").val();
         var customerContactNumber = $("#customerContactNumber").val();
         var customerAddr1 = $("#customerAddr1").val();
@@ -232,4 +232,191 @@
         var submitCustomerUpdateData = { Id: customerId, Name: customerName, ContactNumber: customerContactNumber, EmailID: customerMailID, Addr1: customerAddr1, Addr2: customerAddr2, City: customerCityName, State: customerStateName, Type: customerType }
         SubmitUpdateCustomerData(submitCustomerUpdateData);
     });
+
+    $("#addNewCustomerButton").click(function () {
+        BindStateListToCreateModal();
+        BindCustomerTypeListToCreateModel();
+        $("#createCustomerModal").modal('show');
+    });
+
+    $("#createCustomerModalButton").click(function () {
+        var customerName = $("#customerNameCreate").val();
+        var customerType = $('#customerTypeCreate :selected').val();
+        var customerMailID = $("#customerMailIDCreate").val();
+        var customerContactNumber = $("#customerContactNumberCreate").val();
+        var customerAddr1 = $("#customerAddr1Create").val();
+        var customerAddr2 = $("#customerAddr2Create").val();
+        var customerStateName = $('#customerStateCreate :selected').text();
+        var customerCityName = $('#customerCityCreate :selected').text();
+
+        var submitCustomerCreateData = { Name: customerName, ContactNumber: customerContactNumber, EmailID: customerMailID, Addr1: customerAddr1, Addr2: customerAddr2, City: customerCityName, State: customerStateName, Type: customerType }
+
+        SubmitCreateCustomerData(submitCustomerCreateData);
+    });
+
+    function BindStateListToCreateModal() {
+        var stateList = [];
+        $.ajax({
+            type: "POST",
+            url: "CommonService.asmx/GetListOfStates",
+            data: "",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (r) {
+                for (var key in r.d) {
+                    if (r.d.hasOwnProperty(key)) {
+                        var DropDownState = r.d[key];
+                        var stateOption = { value: DropDownState.Value, text: DropDownState.text }
+                        stateList.push(stateOption);
+                    }
+                }
+                BindStateListToCreateModelDropDown(stateList);
+            },
+            error: function (r) {
+                alert(r.responseText);
+            },
+            failure: function (r) {
+                alert(r.responseText);
+            }
+        });
+    }
+
+    function BindStateListToCreateModelDropDown(stateList) {
+        $("#customerStateCreate").empty();
+        var selectStatement = "<option Value=\"0\" selected>--Select State--</option>";
+        $("#customerStateCreate").append(selectStatement);
+
+        for (var i = 0; i < stateList.length; i++) {
+            var stateListHtml = "<option Value=\"" + stateList[i].value + "\">" + stateList[i].text + "</option>";
+            $("#customerStateCreate").append(stateListHtml);
+        }
+        return false;
+    }
+
+    function BindCustomerTypeListToCreateModel() {
+        var customerTypeList = [];
+        $.ajax({
+            type: "POST",
+            url: "CustomerService.asmx/GetListOfCustomerTypes",
+            data: "",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (r) {
+                for (var key in r.d) {
+                    if (r.d.hasOwnProperty(key)) {
+                        var DropDownCustomerType = r.d[key];
+                        var customerType = { value: DropDownCustomerType.Value, text: DropDownCustomerType.text }
+                        customerTypeList.push(customerType);
+                    }
+                }
+                BindCustomerTypeListToCreateModelDropDown(customerTypeList);
+            },
+            error: function (r) {
+                alert(r.responseText);
+            },
+            failure: function (r) {
+                alert(r.responseText);
+            }
+        });
+    }
+
+    function BindCustomerTypeListToCreateModelDropDown(customerTypeList) {
+        $("#customerTypeCreate").empty();
+        var selectStatement = "<option Value=\"0\" selected>--Select Customer Type--</option>";
+        $("#customerTypeCreate").append(selectStatement);
+
+        for (var i = 0; i < customerTypeList.length; i++) {
+            var customerTypeListHtml = "<option Value=\"" + customerTypeList[i].value + "\">" + customerTypeList[i].text + "</option>";
+            $("#customerTypeCreate").append(customerTypeListHtml);
+        }
+        return false;
+    }
+
+    function SubmitUpdateCustomerData(submitCustomerUpdateData) {
+        var postData = {
+            CustomerData: submitCustomerUpdateData
+        };
+
+        $.ajax({
+            type: "POST",
+            url: "CustomerService.asmx/SubmitEditCustomerData",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            data: JSON.stringify(postData),
+            success: function (data) {
+                var json = data.d;
+                BindCustomerList();
+                alert(json);
+                $("#editCustomerModal").modal('hide');
+            }
+        });
+    }
+
+    function SubmitCreateCustomerData(submitCustomerCreateData) {
+        var postData = {
+            CustomerData: submitCustomerCreateData
+        };
+
+        $.ajax({
+            type: "POST",
+            url: "CustomerService.asmx/SubmitCreateCustomerData",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            data: JSON.stringify(postData),
+            success: function (data) {
+                var json = data.d;
+                $("#createCustomerModal").modal('hide');
+                BindCustomerList();
+                alert(json);
+            }
+        });
+    }
+
+
+    $("#customerStateCreate").change(function () {
+        var optionSelected = $(this).find("option:selected");
+        var stateID = optionSelected.val();
+        BindCityListForCustomerStateCreateModel(stateID);
+    });
+
+    function BindCityListForCustomerStateCreateModel(stateID) {
+        var cityList = [];
+        $.ajax({
+            type: "POST",
+            url: "CommonService.asmx/GetListOfCitiesByStates",
+            data: JSON.stringify({ valueSelected: stateID }),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (r) {
+                for (var key in r.d) {
+                    if (r.d.hasOwnProperty(key)) {
+                        var DropDownCity = r.d[key];
+                        var cityOption = { value: DropDownCity.Value, text: DropDownCity.text }
+                        cityList.push(cityOption);
+                    }
+                }
+                BindCityListForCustomerStateCreateModelDropDown(cityList);
+            },
+            error: function (r) {
+                alert(r.responseText);
+            },
+            failure: function (r) {
+                alert(r.responseText);
+            }
+        });
+    }
+
+    function BindCityListForCustomerStateCreateModelDropDown(cityList) {
+        $("#customerCityCreate").html('');
+
+        var selectStatement = "<option Value=\"0\" selected>--Select City--</option>";
+        $("#customerCityCreate").append(selectStatement);
+
+        for (var i = 0; i < cityList.length; i++) {
+            var cityListHtml = "<option Value=\"" + cityList[i].value + "\">" + cityList[i].text + "</option>";
+            $("#customerCityCreate").append(cityListHtml);
+        }
+        $("#customerCity option:contains(" +"--Select City--"+ ")").attr('selected', true);
+        return false;
+    }
 });
