@@ -45,6 +45,7 @@ namespace PPMS.BAL
             DAL_Customer dAL_Customer = new DAL_Customer();
             Customer customer = new Customer();
             customer.Id = customerData.Id;
+            customer.Name = customerData.Name;
             customer.EmailId = customerData.EmailID;
             customer.AddressLineOne = customerData.Addr1;
             customer.AddressLineTwo = customerData.Addr2;

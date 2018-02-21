@@ -10,7 +10,7 @@
                         <label id="message"></label>
                         <button type="button" id="addNewFuelButton" tabindex="26" class="btn btn-success" style="float: right"><i class="fa fa-plus-circle">Add Fuel</i></button>
                     </div>
-                    <div class="panel-body">
+                    <div class="panel-body table-responsive">
                         <table id="fuelList" class="table table-striped table-bordered" cellspacing="0" width="100%">
                             <thead>
                                 <tr>

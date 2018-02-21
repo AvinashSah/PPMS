@@ -65,9 +65,16 @@ namespace PPMS.DAL
                                 select a).FirstOrDefault();
                 if (customerData == null)
                 {
-                    
-                    dbContext.Customers.Add(customer);
-                    dbContext.SaveChanges();
+                    try
+                    {
+                        dbContext.Customers.Add(customer);
+                        dbContext.SaveChanges();
+                    }
+                    catch (Exception ex)
+                    {
+
+                        throw;
+                    }
                     return customer.Id;
                 }
                 else
