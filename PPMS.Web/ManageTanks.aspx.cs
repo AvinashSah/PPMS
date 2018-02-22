@@ -12,7 +12,7 @@ namespace PPMS.Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            BindTankerList();
+            //BindTankerList();
         }
 
         private void BindTankerList()
@@ -51,7 +51,7 @@ namespace PPMS.Web
                 finalstring += htmlContent;
             }
 
-            tankerListBody.Controls.Add(new Literal { Text = finalstring.ToString() });
+            //tankerListBody.Controls.Add(new Literal { Text = finalstring.ToString() });
 
         }
     }

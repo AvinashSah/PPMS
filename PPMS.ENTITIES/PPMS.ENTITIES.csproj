@@ -75,6 +75,7 @@
     <Compile Include="Fuel.cs">
       <DependentUpon>PPMSModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="TankerData.cs" />
     <Compile Include="FuelData.cs" />
     <Compile Include="FuelTypeConstants.cs" />
     <Compile Include="Meter.cs">

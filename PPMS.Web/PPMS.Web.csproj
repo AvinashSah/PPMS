@@ -158,6 +158,7 @@
     <Content Include="Content\js\wow.min.js" />
     <Content Include="Dashboard.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="TankerService.asmx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -256,6 +257,10 @@
     </Compile>
     <Compile Include="SiteGeneral.Master.designer.cs">
       <DependentUpon>SiteGeneral.Master</DependentUpon>
+    </Compile>
+    <Compile Include="TankerService.asmx.cs">
+      <DependentUpon>TankerService.asmx</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
