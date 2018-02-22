@@ -47,9 +47,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="City.cs">
+      <DependentUpon>PPMSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Country.cs">
+      <DependentUpon>PPMSModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Customer.cs">
       <DependentUpon>PPMSModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="CustomerData.cs" />
     <Compile Include="CustomerType.cs">
       <DependentUpon>PPMSModel.tt</DependentUpon>
     </Compile>
@@ -71,6 +78,9 @@
     <Compile Include="DenominationType.cs">
       <DependentUpon>PPMSModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DropDownCity.cs" />
+    <Compile Include="DropDownCustomerType.cs" />
+    <Compile Include="DropDownState.cs" />
     <Compile Include="EntitySubmittedResponse.cs" />
     <Compile Include="Fuel.cs">
       <DependentUpon>PPMSModel.tt</DependentUpon>
@@ -98,6 +108,9 @@
     </Compile>
     <Compile Include="RoleTypeConstant.cs" />
     <Compile Include="Sale.cs">
+      <DependentUpon>PPMSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="State.cs">
       <DependentUpon>PPMSModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Tanker.cs">

@@ -1,7 +1,7 @@
 ﻿CREATE TABLE [dbo].[Customer] (
     [Id]             INT            IDENTITY (1, 1) NOT NULL,
     [Name]           NVARCHAR (50)  NOT NULL,
-    [ContactNumber]  INT            NULL,
+    [ContactNumber]  BIGINT            NULL,
     [EmailId]        NVARCHAR (50)  NULL,
     [AddressLineOne] NVARCHAR (MAX) NULL,
     [AddressLineTwo] NVARCHAR (MAX) NULL,

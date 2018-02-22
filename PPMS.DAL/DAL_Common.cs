@@ -125,5 +125,33 @@ namespace PPMS.DAL
             }
             return opList;
         }
+
+        public List<State> GetStateList()
+        {
+            List<State> listSate = new List<State>();
+            using (var context = new ppmsEntities())
+            {
+                listSate = (from a in context.States
+                            where a.Name != null
+                            select a).ToList();
+            }
+
+            return listSate;
+
+        }
+
+        public List<City> GetCityByStateID(string selectedState)
+        {
+            List<City> listCity = new List<City>();
+            int id = Convert.ToInt32(selectedState);
+            using (var context = new ppmsEntities())
+            {
+                listCity = (from a in context.Cities
+                            where a.StateID == id
+                            select a).ToList();
+            }
+            return listCity;
+        }
+
     }
 }

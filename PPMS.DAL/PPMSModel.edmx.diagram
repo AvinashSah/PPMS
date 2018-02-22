@@ -35,6 +35,11 @@
         <AssociationConnector Association="ppmsModel.FK_RoleOperationMapping_RoleMaster" ManuallyRouted="false" />
         <AssociationConnector Association="ppmsModel.FK_UserRoleMapping_RoleMaster" ManuallyRouted="false" />
         <AssociationConnector Association="ppmsModel.FK_UserRoleMapping_UserMaster" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ppmsModel.City" Width="1.5" PointX="16.875" PointY="1" />
+        <EntityTypeShape EntityType="ppmsModel.Country" Width="1.5" PointX="12.375" PointY="0.875" />
+        <EntityTypeShape EntityType="ppmsModel.State" Width="1.5" PointX="14.625" PointY="0.875" />
+        <AssociationConnector Association="ppmsModel.FK__Cities__StateID__5165187F" />
+        <AssociationConnector Association="ppmsModel.FK__States__country___5BE2A6F2" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
