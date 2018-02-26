@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using PPMS.ENTITIES;
+using System.Globalization;
 
 namespace PPMS.DAL
 {
@@ -134,18 +135,32 @@ namespace PPMS.DAL
                 tankerData.FuelTypeId = tanker.FuelTypeId;
                 dbContext.SaveChanges();
 
-                //dailyTankerReading.DailyStartReading = dailyTankerReading.DailyStartReading;
-                //dailyTankerReading.DailyEndReading = dailyTankerReading.DailyEndReading;
-                dailyTankerReading.TankerId = tanker.Id;
-                dailyTankerReading.CreatedBy = Convert.ToInt64(userOpMap.UserID);
-                dailyTankerReading.Updatedby = Convert.ToInt64(userOpMap.UserID);
-                dailyTankerReading.UpdatedOn = DateTime.Now;
-                dailyTankerReading.CreatedOn = DateTime.Now;
-                dailyTankerReading.Date = DateTime.Now;
-                dailyTankerReading.IsActive = true;
+                DateTime today = DateTime.Now;
+                DailyTankerReading dailyTankerReadingData = new DailyTankerReading();
+                dailyTankerReadingData = (from a in dbContext.DailyTankerReadings
+                                          where a.Date >= today && a.TankerId == tanker.Id && a.IsActive == true
+                                          select a).FirstOrDefault();
+                if (dailyTankerReadingData == null)
+                {
+                    dailyTankerReading.TankerId = tanker.Id;
+                    dailyTankerReading.CreatedBy = Convert.ToInt64(userOpMap.UserID);
+                    dailyTankerReading.Updatedby = Convert.ToInt64(userOpMap.UserID);
+                    dailyTankerReading.UpdatedOn = DateTime.Now;
+                    dailyTankerReading.CreatedOn = DateTime.Now;
+                    dailyTankerReading.Date = DateTime.Now;
+                    dailyTankerReading.IsActive = true;
 
-                dbContext.DailyTankerReadings.Add(dailyTankerReading);
-                dbContext.SaveChanges();//this generates the Id for customer
+                    dbContext.DailyTankerReadings.Add(dailyTankerReading);
+                    dbContext.SaveChanges();//this generates the Id for DailyTankerReadings
+                }
+                else
+                {
+                    dailyTankerReadingData.DailyStartReading = dailyTankerReading.DailyStartReading;
+                    dailyTankerReadingData.DailyEndReading = dailyTankerReading.DailyEndReading;
+                    dailyTankerReadingData.Updatedby = Convert.ToInt64(userOpMap.UserID);
+                    dailyTankerReadingData.UpdatedOn = DateTime.Now;
+                    dbContext.SaveChanges();//this generates the Id for DailyTankerReadings
+                }
                 return dailyTankerReading.Id;
             }
         }

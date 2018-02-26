@@ -10,8 +10,8 @@
                         <label id="message"></label>
                         <button type="button" id="addNewTankerButton" tabindex="26" class="btn btn-success" style="float: right"><i class="fa fa-plus-circle">Add Tanker</i></button>
                     </div>
-                    <div class="panel-body">
-                        <table id="tankerList" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                    <div class="panel-body table-responsive">
+                        <table id="tankerList" class="table table-striped table-bordered" cellspacing="0">
                             <thead>
                                 <tr>
                                     <th scope="col">Name</th>
@@ -44,11 +44,10 @@
                         <div class="form-group col-lg-6">
                             <label for="tankerNameCreate">Tanker Name:</label>
                             <input type="text" class="form-control" id="tankerNameCreate" />
-                            <input style="display: none" type="text" class="form-control" id="tankerID" />
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="tankerFuelTypeCreate">Fuel Type:</label>
-                            <select tabindex="10" class="form-control" id="tankerFuelTypeCreate">
+                            <select tabindex="10" class="form-control" id="tankerFuelTypeCreate" tabindex="1">
                                 <option value="0">Select Fuel Type</option>
                             </select>
                         </div>
@@ -56,34 +55,26 @@
                     <div class="row">
                         <div class="form-group col-lg-6">
                             <label for="tankerSizeCreate">Size:</label>
-                            <input type="text" class="form-control" id="tankerSizeCreate" />
+                            <input type="text" class="form-control" id="tankerSizeCreate" tabindex="2" />
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="tankerSrtRdCreate">Day Start Reading:</label>
-                            <input type="text" class="form-control" id="tankerSrtRdCreate" />
+                            <input type="text" class="form-control" id="tankerSrtRdCreate" tabindex="3"/>
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-lg-6">
                             <label for="tankerDescriptionCreate">Description:</label>
-                            <input type="text" class="form-control" id="tankerDescriptionCreate" />
+                            <input type="text" class="form-control" id="tankerDescriptionCreate" tabindex="4" />
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="tankerEndRdCreate">Day End Reading:</label>
-                            <input type="text" class="form-control" id="tankerEndRdCreate" />
+                            <input type="text" class="form-control" id="tankerEndRdCreate" tabindex="5" />
                         </div>
                     </div>
-                   <%-- <div class="row">
-                        <div class="form-group col-lg-6">
-                            <label for="tankerDateCreate">Date:</label>
-                            <input type="text" class="form-control" id="tankerDateCreate"/>
-                        </div>
-                        <div class="form-group col-lg-6">
-                        </div>
-                    </div>--%>
                 </div>
                 <div class="modal-footer">
-                    <button id="createTankerModalButton" type="button" class="btn btn-success" data-dismiss="modal">Create</button>
+                    <button id="createTankerModalButton" type="button" class="btn btn-success" data-dismiss="modal" tabindex="6">Create</button>
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                 </div>
             </div>
@@ -106,7 +97,7 @@
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="tankerFuelTypeEdit">Fuel Type:</label>
-                            <select tabindex="10" class="form-control" id="tankerFuelTypeEdit">
+                            <select class="form-control" id="tankerFuelTypeEdit" tabindex="1">
                                 <option value="0">Select Fuel Type</option>
                             </select>
                         </div>
@@ -114,34 +105,26 @@
                     <div class="row">
                         <div class="form-group col-lg-6">
                             <label for="tankerSizeEdit">Size:</label>
-                            <input type="text" class="form-control" id="tankerSizeEdit" />
+                            <input type="text" class="form-control" id="tankerSizeEdit" tabindex="2"/>
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="tankerSrtRdEdit">Day Start Reading:</label>
-                            <input type="text" class="form-control" id="tankerSrtRdEdit" />
+                            <input type="text" class="form-control" id="tankerSrtRdEdit" tabindex="3"/>
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-lg-6">
                             <label for="tankerDescriptionEdit">Description:</label>
-                            <input type="text" class="form-control" id="tankerDescriptionEdit" />
+                            <input type="text" class="form-control" id="tankerDescriptionEdit" tabindex="4"/>
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="tankerEndRdEdit">Day End Reading:</label>
-                            <input type="text" class="form-control" id="tankerEndRdEdit" />
+                            <input type="text" class="form-control" id="tankerEndRdEdit" tabindex="5"/>
                         </div>
                     </div>
-                   <%-- <div class="row">
-                        <div class="form-group col-lg-6">
-                            <label for="tankerDateEdit">Date:</label>
-                            <input type="text" class="form-control" id="tankerDateEdit" />
-                        </div>
-                        <div class="form-group col-lg-6">
-                        </div>
-                    </div>--%>
                 </div>
                 <div class="modal-footer">
-                    <button id="editTankerModalButton" type="button" class="btn btn-success" data-dismiss="modal">Update</button>
+                    <button id="editTankerModalButton" type="button" class="btn btn-success" data-dismiss="modal" tabindex="6">Update</button>
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                 </div>
             </div>
