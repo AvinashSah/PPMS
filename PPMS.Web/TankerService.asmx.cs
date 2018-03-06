@@ -50,7 +50,7 @@ namespace PPMS.Web
                     {
                         tankerData.DayStartReading = dailyTankerReading.DailyStartReading;
                         tankerData.DayEndReading = dailyTankerReading.DailyEndReading;
-                        //break;
+                        break;
                     }
                     else
                     {
@@ -142,7 +142,7 @@ namespace PPMS.Web
                         {
                             tankerData.DayStartReading = dailyTankerReading.DailyStartReading;
                             tankerData.DayEndReading = dailyTankerReading.DailyEndReading;
-                            //break;
+                            break;
                         }
                         else
                         {

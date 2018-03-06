@@ -29,8 +29,8 @@ namespace PPMS.DAL
             using (var dbContext = new ppmsEntities())
             {
                 dailyDailyTankerReading = (from a in dbContext.DailyTankerReadings
-                                           where a.IsActive == true && a.Date <= today
-                                           orderby a.Date descending
+                                           where a.IsActive == true && a.UpdatedOn <= today
+                                           orderby a.UpdatedOn descending
                                            select a).ToList();
             }
             return dailyDailyTankerReading;
@@ -107,7 +107,6 @@ namespace PPMS.DAL
                     dailyTankerReading.Updatedby = Convert.ToInt64(userOpMap.UserID);
                     dailyTankerReading.UpdatedOn = DateTime.Now;
                     dailyTankerReading.CreatedOn = DateTime.Now;
-                    dailyTankerReading.Date = DateTime.Now;
                     dailyTankerReading.IsActive = true;
                     dailyTankerReading.TankerId = tankerID;
 
@@ -133,21 +132,26 @@ namespace PPMS.DAL
                 tankerData.Description = tanker.Description;
                 tankerData.Size = tanker.Size;
                 tankerData.FuelTypeId = tanker.FuelTypeId;
+                tankerData.UpdatedOn = DateTime.Now;
+                tankerData.Updatedby = Convert.ToInt64(userOpMap.UserID);
                 dbContext.SaveChanges();
 
                 DateTime today = DateTime.Now;
                 DailyTankerReading dailyTankerReadingData = new DailyTankerReading();
                 dailyTankerReadingData = (from a in dbContext.DailyTankerReadings
-                                          where a.Date >= today && a.TankerId == tanker.Id && a.IsActive == true
+                                          where a.UpdatedOn.Value.Day == today.Day &&
+                                         a.UpdatedOn.Value.Month == today.Month &&
+                                         a.UpdatedOn.Value.Year == today.Year && a.TankerId == tanker.Id && a.IsActive == true
                                           select a).FirstOrDefault();
                 if (dailyTankerReadingData == null)
                 {
                     dailyTankerReading.TankerId = tanker.Id;
+                    dailyTankerReading.DailyStartReading = dailyTankerReading.DailyStartReading;
+                    dailyTankerReading.DailyEndReading = dailyTankerReading.DailyEndReading;
                     dailyTankerReading.CreatedBy = Convert.ToInt64(userOpMap.UserID);
                     dailyTankerReading.Updatedby = Convert.ToInt64(userOpMap.UserID);
                     dailyTankerReading.UpdatedOn = DateTime.Now;
                     dailyTankerReading.CreatedOn = DateTime.Now;
-                    dailyTankerReading.Date = DateTime.Now;
                     dailyTankerReading.IsActive = true;
 
                     dbContext.DailyTankerReadings.Add(dailyTankerReading);

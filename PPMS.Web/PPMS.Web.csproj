@@ -131,6 +131,7 @@
     <Content Include="ManageFuel.aspx" />
     <Content Include="ManageMeters.aspx" />
     <Content Include="ManageTanks.aspx" />
+    <Content Include="MeterService.asmx" />
     <Content Include="Sale.aspx" />
     <Content Include="SalesReport.aspx" />
     <Content Include="SiteGeneral.Master" />
@@ -234,6 +235,10 @@
     </Compile>
     <Compile Include="ManageTanks.aspx.designer.cs">
       <DependentUpon>ManageTanks.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MeterService.asmx.cs">
+      <DependentUpon>MeterService.asmx</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sale.aspx.cs">

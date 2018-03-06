@@ -12,7 +12,7 @@ namespace PPMS.Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            BindMeterList();
+            //BindMeterList();
         }
 
         private void BindMeterList()
@@ -50,7 +50,7 @@ namespace PPMS.Web
                 finalstring += htmlContent;
             }
 
-            MeterListBody.Controls.Add(new Literal { Text = finalstring.ToString() });
+            //MeterListBody.Controls.Add(new Literal { Text = finalstring.ToString() });
 
         }
     }
