@@ -4,9 +4,9 @@
 
 $(document).ready(function () {
     BindTankerList();
-    debugger;
+    
     function BindTankerList() {
-        debugger;
+        
         var tankerList = [];
         $.ajax({
             type: "POST",
@@ -39,7 +39,7 @@ $(document).ready(function () {
     function BindTankerListToTankerTable(tankerList) {
         $("#tankerList tbody").html("");
         var htmlContent = "";
-        debugger;
+        
         for (var i = 0; i < tankerList.length; i++) {
             htmlContent += "<tr class=\"tankerID\" id=\"" + tankerList[i].Id + "\">";
             htmlContent += "<td scope=\"row\">" + tankerList[i].Name + "</td>";
@@ -61,7 +61,7 @@ $(document).ready(function () {
         BindFuelTypeListToAddModel();
     });
     function BindFuelTypeListToAddModel() {
-        debugger;
+        
         var fuelTypeList = [];
         $.ajax({
             type: "POST",
@@ -100,7 +100,7 @@ $(document).ready(function () {
         return false;
     }
     $("#createTankerModalButton").click(function () {
-        debugger;
+        
         var tankerName = $("#tankerNameCreate").val();
         var tankerFuelTypeID = $("#tankerFuelTypeCreate").val();
         var tankersize = $("#tankerSizeCreate").val();
@@ -136,7 +136,7 @@ $(document).ready(function () {
     }
 
     //function GetFuelList(controlName) {
-    //    debugger;
+    //    
     //    $(controlName).html("");
     //    var uel3 = "TankerService.asmx/GetFuelList";
     //    var fuelList = [];
@@ -173,7 +173,7 @@ $(document).ready(function () {
     //}
 
     $("#tankerList").on('click', '.editTanker', function () {
-        debugger;
+        
         var tankerIDClicked = $(this).attr('id');
         event.preventDefault();
         GetTankerDataByID(tankerIDClicked);
@@ -206,7 +206,7 @@ $(document).ready(function () {
     }
 
     function BindEditedTankerDataToEditModel(tankerDataClicked) {
-        debugger;
+        
         for (var i = 0; i < tankerDataClicked.length; i++) {
 
             $("#tankerNameEdit").val(tankerDataClicked[i].Name);
@@ -220,7 +220,7 @@ $(document).ready(function () {
         $("#editTankerModal").modal('show');
     }
     function BindFuelTypeListToEditModel(fuelTypeName) {
-        debugger;
+        
         var fuelTypeList = [];
         $.ajax({
             type: "POST",

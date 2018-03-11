@@ -10,7 +10,6 @@
                             <div class="wizard-inner">
                                 <div class="connecting-line"></div>
                                 <ul class="nav nav-tabs" role="tablist">
-
                                     <li role="presentation" class="active">
                                         <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Step 1">
                                             <span class="round-tab">
@@ -51,9 +50,7 @@
                                             <div class="form-group col-lg-6">
                                                 <label for="customerSale">Customer</label>
                                                 <select class="form-control" id="customerSale">
-                                                    <option value="0">--Select Customer--</option>
-                                                    <option value="1">Tekriwal Motors</option>
-                                                    <option value="1">Honda</option>
+                                                    <option value="0">--Select Customer For Sale--</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -66,11 +63,8 @@
                                         <div class="row">
                                             <div class="form-group col-lg-4">
                                                 <label for="customerFuel">Fuel</label>
-                                                <select class="form-control" id="customerFuel">
-                                                    <option value="0">--Select Fuel Type--</option>
-                                                    <option value="1">Petrol XP</option>
-                                                    <option value="1">Petrol Normal</option>
-                                                    <option value="1">Diesel XP</option>
+                                                <select class="form-control" id="customerFuelSale">
+                                                    <option value="0">--Select Fuel For Sale--</option>
                                                 </select>
                                             </div>
                                             <div class="form-group col-lg-4">
@@ -78,7 +72,7 @@
                                                 <input type="text" class="form-control" id="customerFuelAmount" />
                                             </div>
                                             <div class="form-group col-lg-4">
-                                                <label for="customerFuelAmountCost">Total Cost</label>
+                                                <label for="customerFuelAmountCost">Fuel Cost</label>
                                                 <input type="text" class="form-control" id="customerFuelAmountCost" />
                                             </div>
                                         </div>
@@ -91,7 +85,7 @@
                                     </div>
                                     <div class="tab-pane" role="tabpanel" id="step3">
                                         <div class="row table-responsive">
-                                            <div class="form-group col-lg-6">
+                                            <div class="form-group col-lg-4">
                                                 <label for="SaleType">Sale Type</label>
                                                 <select class="form-control" id="SaleType">
                                                     <option value="0">--Select Sale Type--</option>
@@ -99,6 +93,14 @@
                                                     <option value="2">Cash</option>
                                                     <option value="3">Token</option>
                                                 </select>
+                                            </div>
+                                            <div class="form-group col-lg-4" style="display: none" id="customerTokenDiv">
+                                                <label for="customerToken">Customer Token</label>
+                                                <input type="text" class="form-control" id="customerToken" />
+                                            </div>
+                                            <div class="form-group col-lg-4">
+                                                <label for="customerFuelTotalAmountCost">Total Cost</label>
+                                                <input type="text" class="form-control" id="customerFuelTotalAmountCost" />
                                             </div>
                                         </div>
                                         <ul class="list-inline pull-right">

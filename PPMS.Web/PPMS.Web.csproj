@@ -83,6 +83,7 @@
     <Content Include="Content\CustomJs\Customer.js" />
     <Content Include="Content\CustomJs\Fuel.js" />
     <Content Include="Content\CustomJs\Meter.js" />
+    <Content Include="Content\CustomJs\Sale.js" />
     <Content Include="Content\CustomJs\Tanker.js" />
     <Content Include="Content\CustomJs\Wizard.js" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />

@@ -15,7 +15,6 @@ namespace PPMS.BAL
             DAL_Customer bAL_Customer = new DAL_Customer();
             return bAL_Customer.GetCustomerList();
         }
-
         public List<CustomerType> GetCustomerType()
         {
             DAL_Customer bAL_Customer = new DAL_Customer();

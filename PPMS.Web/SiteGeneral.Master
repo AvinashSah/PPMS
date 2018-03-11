@@ -150,6 +150,7 @@
         <script src="Content/CustomJs/Tanker.js" type="text/javascript"></script>
         <script src="Content/CustomJs/Customer.js" type="text/javascript"></script>
         <script src="Content/CustomJs/Wizard.js"  type="text/javascript"></script>
+        <script src="Content/CustomJs/Sale.js"  type="text/javascript"></script>
     </form>
 </body>
 </html>

@@ -1,9 +1,7 @@
 ﻿
 $(document).ready(function () {
     BindMeterList();
-    debugger;
     function BindMeterList() {
-        debugger;
         var meterList = [];
         $.ajax({
             type: "POST",
@@ -36,7 +34,6 @@ $(document).ready(function () {
     function BindMeterListToMeterTable(meterList) {
         $("#meterList tbody").html("");
         var htmlContent = "";
-        debugger;
         for (var i = 0; i < meterList.length; i++) {
             htmlContent += "<tr class=\"meterID\" id=\"" + meterList[i].Id + "\">";
             htmlContent += "<td scope=\"row\">" + meterList[i].Name + "</td>";
@@ -56,7 +53,6 @@ $(document).ready(function () {
         BindFuelTypeListToAddModel();
     });
     function BindFuelTypeListToAddModel() {
-        debugger;
         var fuelTypeList = [];
         $.ajax({
             type: "POST",
@@ -95,7 +91,6 @@ $(document).ready(function () {
         return false;
     }
     $("#createMeterModalButton").click(function () {
-        debugger;
         var meterName = $("#meterNameCreate").val();
         var meterFuelTypeID = $("#meterFuelTypeCreate").val();
         var meterdesc = $("#meterDescriptionCreate").val();
@@ -129,7 +124,6 @@ $(document).ready(function () {
     }
 
     $("#meterList").on('click', '.editMeter', function () {
-        debugger;
         var meterIDClicked = $(this).attr('id');
         event.preventDefault();
         GetMeterDataByID(meterIDClicked);
@@ -162,7 +156,6 @@ $(document).ready(function () {
     }
 
     function BindEditedMeterDataToEditModel(meterDataClicked) {
-        debugger;
         for (var i = 0; i < meterDataClicked.length; i++) {
 
             $("#meterNameEdit").val(meterDataClicked[i].Name);
@@ -175,7 +168,6 @@ $(document).ready(function () {
         $("#editMeterModal").modal('show');
     }
     function BindFuelTypeListToEditModel(fuelTypeName) {
-        debugger;
         var fuelTypeList = [];
         $.ajax({
             type: "POST",
